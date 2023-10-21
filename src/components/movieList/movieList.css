@@ -1,0 +1,21 @@
+.movie__list {
+	padding: 0 3rem 3rem 3rem;
+}
+
+.list__title {
+	color: azure;
+	font-size: 1.75rem;
+	margin: 2.5rem;
+}
+
+.list__cards {
+	display: flex;
+	margin-top: 1.5rem;
+	align-items: center;
+	justify-content: flex-start;
+	overflow-x: auto;
+	overflow-y: hidden;
+	gap: 1.2rem;
+	padding: 0 3rem 3rem 3rem;
+	height: max-content;
+}

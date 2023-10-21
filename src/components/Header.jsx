@@ -33,7 +33,7 @@ const Header = () => {
 				to={"/"}
 				className="flex items-center justify-center gap-4"
 			>
-				<img src={Logo} alt="logo" className="w-12" />
+				<img src={Logo} alt="logo" className="w-12 rounded-full" />
 				<p className="font-semibold text-xl">IntelliStream</p>
 			</NavLink>
 

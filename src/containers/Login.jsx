@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { LoginBg, Logo } from "../assets";
 import { LoginInput } from "../components";
-import { FaEnvelope, FaLock, FcGoogle } from "../assets/icons";
+import { FaEnvelope, FaLock } from "../assets/icons";
 import { motion } from "framer-motion";
 import { buttonClick } from "../animations";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,6 @@ const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
-	const [verificationCode, setVerificationCode] = useState("");
 	const [isSignUp, setIsSignUp] = useState(false);
 	const [isRegistered, setIsRegistered] = useState(false);
 
@@ -99,7 +98,7 @@ const Login = () => {
 			{/* Content Box */}
 			<div className="flex flex-col items-center bg-lightOverlay w-[30%] md:w-500 h-full z-10 backdrop-blur-md p-4 px-4 py-12 gap-6">
 				<div className="flex items-center justify-start gap-4 w-full">
-					<img src={Logo} className="w-8" alt="Logo" />
+					<img src={Logo} className="w-12 rounded-full" alt="Logo" />
 					<p className="text-headingColor font-semibold text-2xl">
 						IntelliStream
 					</p>
@@ -219,6 +218,7 @@ function EmailVerification({ email, onVerify }) {
 					placeholder="Verification Code"
 					value={verificationCode}
 					onChange={(e) => setVerificationCode(e.target.value)}
+					className="w-full h-full bg-transparent text-headingColor text-lg font-semibold border-none outline-none"
 				/>
 			</motion.div>
 

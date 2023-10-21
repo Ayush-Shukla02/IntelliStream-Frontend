@@ -15,6 +15,7 @@ import {
 	alertWarning,
 } from "../context/actions/alertActions";
 import { Auth } from "aws-amplify";
+import { personalize_run } from "../api/personalize";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -33,6 +34,8 @@ const Login = () => {
 	useEffect(() => {
 		if (user) {
 			// query on lambda
+
+			// personalize_run(user);
 
 			navigate("/", { replace: true });
 		}

@@ -23,24 +23,6 @@ import {
 	alertWarning,
 } from "../context/actions/alertActions";
 
-// const Login = () => {
-// 	const [userEmail, setUserEmail] = useState("");
-// 	const [isSignUp, setIsSignUp] = useState(false);
-// 	const [password, setPassword] = useState("");
-// 	const [confirmPassword, setConfirmPassword] = useState("");
-
-// 	const firebaseauth = getAuth(app);
-// 	const provider = new GoogleAuthProvider();
-
-// 	// const navigate = useNavigate();
-// 	// const dispatch = useDispatch();
-
-// 	// const user = useSelector((state) => state.user);
-// 	// const alert = useSelector((state) => state.alert);
-
-// 	return <div className="text-white">This is login page</div>;
-// };
-
 const Login = () => {
 	const [userEmail, setUserEmail] = useState("");
 	const [isSignUp, setIsSignUp] = useState(false);
@@ -58,112 +40,113 @@ const Login = () => {
 
 	useEffect(() => {
 		if (user) {
+			// query on lambda
+
 			navigate("/", { replace: true });
 		}
 	}, [user]);
 
 	const loginWithGoogle = async () => {
-		await signInWithPopup(firebaseauth, provider)
-			.then((userCred) => {
-				firebaseauth.onAuthStateChanged((cred) => {
-					if (cred) {
-						cred.getIdToken().then((token) => {
-							validateUserJWTToken(token).then((data) => {
-								dispatch(setUserDetails(data));
-							});
-							navigate("/", { replace: true });
-						});
-					}
-				});
-			})
-			.catch((error) => {
-				if (error.code === "auth/cancelled-popup-request") {
-					dispatch(
-						alertInfo("Popup request was cancelled by the user.")
-					);
-					setInterval(() => {
-						dispatch(alertNull());
-					}, 3000);
-				} else if (error.code === "auth/popup-closed-by-user") {
-					dispatch(alertInfo("Popup was closed by the user."));
-					setInterval(() => {
-						dispatch(alertNull());
-					}, 3000);
-				} else {
-					dispatch(
-						alertWarning("Authentication Error: ", error.message)
-					);
-					setInterval(() => {
-						dispatch(alertNull());
-					}, 3000);
-				}
-			});
+		// await signInWithPopup(firebaseauth, provider)
+		// 	.then((userCred) => {
+		// 		firebaseauth.onAuthStateChanged((cred) => {
+		// 			if (cred) {
+		// 				cred.getIdToken().then((token) => {
+		// 					validateUserJWTToken(token).then((data) => {
+		// 						dispatch(setUserDetails(data));
+		// 					});
+		// 					navigate("/", { replace: true });
+		// 				});
+		// 			}
+		// 		});
+		// 	})
+		// 	.catch((error) => {
+		// 		if (error.code === "auth/cancelled-popup-request") {
+		// 			dispatch(
+		// 				alertInfo("Popup request was cancelled by the user.")
+		// 			);
+		// 			setInterval(() => {
+		// 				dispatch(alertNull());
+		// 			}, 3000);
+		// 		} else if (error.code === "auth/popup-closed-by-user") {
+		// 			dispatch(alertInfo("Popup was closed by the user."));
+		// 			setInterval(() => {
+		// 				dispatch(alertNull());
+		// 			}, 3000);
+		// 		} else {
+		// 			dispatch(
+		// 				alertWarning("Authentication Error: ", error.message)
+		// 			);
+		// 			setInterval(() => {
+		// 				dispatch(alertNull());
+		// 			}, 3000);
+		// 		}
+		// 	});
 	};
 
 	const signUpWithEmailPass = async () => {
-		if (userEmail === "" || password === "" || confirmPassword === "") {
-			dispatch(alertInfo("Required fields should not be empty."));
-			setInterval(() => {
-				dispatch(alertNull());
-			}, 3000);
-		} else if (password !== confirmPassword) {
-			dispatch(alertWarning("Passwords do not match."));
-			setInterval(() => {
-				dispatch(alertNull());
-			}, 3000);
-		} else {
-			setUserEmail("");
-			setPassword("");
-			setConfirmPassword("");
-			await createUserWithEmailAndPassword(
-				firebaseauth,
-				userEmail,
-				password
-			).then((userCred) => {
-				firebaseauth.onAuthStateChanged((cred) => {
-					if (cred) {
-						cred.getIdToken().then((token) => {
-							validateUserJWTToken(token).then((data) => {
-								dispatch(setUserDetails(data));
-							});
-							navigate("/", { replace: true });
-						});
-					}
-				});
-			});
-		}
+		// if (userEmail === "" || password === "" || confirmPassword === "") {
+		// 	dispatch(alertInfo("Required fields should not be empty."));
+		// 	setInterval(() => {
+		// 		dispatch(alertNull());
+		// 	}, 3000);
+		// } else if (password !== confirmPassword) {
+		// 	dispatch(alertWarning("Passwords do not match."));
+		// 	setInterval(() => {
+		// 		dispatch(alertNull());
+		// 	}, 3000);
+		// } else {
+		// 	setUserEmail("");
+		// 	setPassword("");
+		// 	setConfirmPassword("");
+		// 	await createUserWithEmailAndPassword(
+		// 		firebaseauth,
+		// 		userEmail,
+		// 		password
+		// 	).then((userCred) => {
+		// 		firebaseauth.onAuthStateChanged((cred) => {
+		// 			if (cred) {
+		// 				cred.getIdToken().then((token) => {
+		// 					validateUserJWTToken(token).then((data) => {
+		// 						dispatch(setUserDetails(data));
+		// 					});
+		// 					navigate("/", { replace: true });
+		// 				});
+		// 			}
+		// 		});
+		// 	});
+		// }
 	};
 
 	const signInWIthEmailPass = async () => {
-		if (userEmail === "" || password === "") {
-			dispatch(alertInfo("Required fields should not be empty."));
-		} else {
-			setUserEmail("");
-			setPassword("");
-			await signInWithEmailAndPassword(firebaseauth, userEmail, password)
-				.then((userCred) => {
-					firebaseauth.onAuthStateChanged((cred) => {
-						if (cred) {
-							cred.getIdToken().then((token) => {
-								validateUserJWTToken(token).then((data) => {
-									dispatch(setUserDetails(data));
-								});
-								navigate("/", { replace: true });
-							});
-						}
-					});
-				})
-				.catch((error) => {
-					const errorCode = error.code;
-					const errorMessage = error.message;
-
-					if (errorCode === "auth/wrong-password") {
-						dispatch(alertWarning("Wrong Password"));
-					} else if (errorCode === "auth/user-not-found") {
-						dispatch(alertWarning("User not found"));
-					}
-				});
-		}
+		// if (userEmail === "" || password === "") {
+		// 	dispatch(alertInfo("Required fields should not be empty."));
+		// } else {
+		// 	setUserEmail("");
+		// 	setPassword("");
+		// 	await signInWithEmailAndPassword(firebaseauth, userEmail, password)
+		// 		.then((userCred) => {
+		// 			firebaseauth.onAuthStateChanged((cred) => {
+		// 				if (cred) {
+		// 					cred.getIdToken().then((token) => {
+		// 						validateUserJWTToken(token).then((data) => {
+		// 							dispatch(setUserDetails(data));
+		// 						});
+		// 						navigate("/", { replace: true });
+		// 					});
+		// 				}
+		// 			});
+		// 		})
+		// 		.catch((error) => {
+		// 			const errorCode = error.code;
+		// 			const errorMessage = error.message;
+		// 			if (errorCode === "auth/wrong-password") {
+		// 				dispatch(alertWarning("Wrong Password"));
+		// 			} else if (errorCode === "auth/user-not-found") {
+		// 				dispatch(alertWarning("User not found"));
+		// 			}
+		// 		});
+		// }
 	};
 
 	return (
@@ -174,14 +157,12 @@ const Login = () => {
 				alt="Background"
 				className="w-full h-full object-cover absolute top-0 left-0"
 			/>
-			This is login page.
 			{/* Content Box */}
 			<div className="flex flex-col items-center bg-lightOverlay w-[30%] md:w-500 h-full z-10 backdrop-blur-md p-4 px-4 py-12 gap-6">
-				Logo
 				<div className="flex items-center justify-start gap-4 w-full">
 					<img src={Logo} className="w-8" alt="Logo" />
 					<p className="text-headingColor font-semibold text-2xl">
-						YumYumYard
+						IntelliStream
 					</p>
 				</div>
 				{/* Welcome Text */}

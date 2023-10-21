@@ -9,6 +9,10 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import myReducers from "./context/reducers";
 
+import {Amplify} from "aws-amplify";
+import config from "./aws-exports";
+Amplify.configure(config);
+
 const myStore = createStore(
 	myReducers,
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

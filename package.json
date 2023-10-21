@@ -1,14 +1,15 @@
 {
-	"name": "imdb-fe",
+	"name": "intellistream",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@aws-amplify/ui-react": "^5.3.1",
 		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
+		"aws-amplify": "^5.3.11",
 		"axios": "^1.5.1",
 		"dotenv": "^16.3.1",
-		"firebase": "^10.5.0",
 		"framer-motion": "^10.16.4",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",

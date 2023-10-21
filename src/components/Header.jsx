@@ -1,34 +1,31 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Avatar, Logo } from "../assets";
 import { isActiveStyles, isNotActiveStyles } from "../utils/styles";
 import { motion } from "framer-motion";
 import { buttonClick, slideTop } from "../animations";
-import { MdLogout, MdShoppingCart } from "../assets/icons";
+import { MdLogout } from "../assets/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { getAuth } from "firebase/auth";
-import { app } from "../config/firebase.config";
 import { setUserNull } from "../context/actions/userActions";
+import { Auth } from "aws-amplify";
 
 const Header = () => {
-	// const user = useSelector((state) => state.user);
+	const user = useSelector((state) => state.user);
 
-	// const [isMenuOpen, setIsMenuOpen] = useState(false);
-	// const firebaseauth = getAuth(app);
-	// const navigate = useNavigate();
-	// const dispatch = useDispatch();
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-	// const signOut = () => {
-	// 	firebaseauth
-	// 		.signOut()
-	// 		.then(() => {
-	// 			dispatch(setUserNull());
-	// 			navigate("/login", { replace: true });
-	// 		})
-	// 		.catch((error) => {
-	// 			console.log(error);
-	// 		});
-	// };
+	const signOut = async () => {
+		try {
+			await Auth.signOut();
+			dispatch(setUserNull());
+			navigate("/login", { replace: true });
+			console.log("User signed out");
+		} catch (error) {
+			console.error("Error signing out: ", error);
+		}
+	};
 
 	return (
 		<header className="fixed backdrop-blur-md z-50 inset-x-0 top-0 flex items-center justify-between px-12 md:px-20 py-6">
@@ -58,17 +55,9 @@ const Header = () => {
 					>
 						Dashboard
 					</NavLink>
-					<NavLink to={"/login"}>
-						<motion.button
-							{...buttonClick}
-							className="px-4 py-2 rounded-md shadow-md bg-lightOverlay border border-red-300 cursor-pointer"
-						>
-							Login
-						</motion.button>
-					</NavLink>
 				</ul>
 
-				{/* {user ? (
+				{user ? (
 					<>
 						<div
 							className="relative cursor-pointer"
@@ -80,7 +69,7 @@ const Header = () => {
 							<div className="w-12 h-12 rounded-full shadow-md overflow-hidden cursor-pointer flex items-center justify-center">
 								<motion.img
 									className="w-full h-full object-cover"
-									src={user?.picture ? user?.picture : Avatar}
+									src={Avatar}
 									whileHover={{ scale: 1.15 }}
 									referrerPolicy="no-referrer"
 								/>
@@ -118,7 +107,7 @@ const Header = () => {
 							</motion.button>
 						</NavLink>
 					</>
-				)} */}
+				)}
 			</nav>
 		</header>
 	);

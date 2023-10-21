@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-imdbclonereactapp-dev-184437-authRole",
+      "UnauthRoleArn": "arn:aws:iam::772440233846:role/amplify-imdbclonereactapp-dev-184437-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::772440233846:role/amplify-imdbclonereactapp-dev-184437-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-imdbclonereactapp-dev-184437-deployment",
+      "UnauthRoleName": "amplify-imdbclonereactapp-dev-184437-unauthRole",
+      "StackName": "amplify-imdbclonereactapp-dev-184437",
+      "StackId": "arn:aws:cloudformation:ap-south-1:772440233846:stack/amplify-imdbclonereactapp-dev-184437/cac9dae0-7013-11ee-a799-025148d06844",
+      "AmplifyAppId": "dz9pvmdd0z75c"
+    },
+    "categories": {
+      "auth": {
+        "imdbclonereactapp02ea1683": {}
+      }
+    }
+  }
+}

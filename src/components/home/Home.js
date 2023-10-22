@@ -5,16 +5,20 @@ import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import MovieList from "../movieList/movieList";
 import Header from "../Header";
-import { tmdbBaseURL, lambdaURL } from "../../api";
+import { tmdbBaseURL, lambdaMovieURL, lambdaUserURL } from "../../api";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import Cards from "../card/card";
 
 const Home = () => {
 	const [popularMovies, setPopularMovies] = useState([]);
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
 	const [forYouMovies, setForYouMovies] = useState([]);
+	const [userId, setUserId] = useState("");
 
 	const user = useSelector((state) => state.user);
+
+	const userName = user ? user.userName : null;
 
 	useEffect(() => {
 		fetch(
@@ -24,38 +28,47 @@ const Home = () => {
 			.then((data) => setPopularMovies(data.results));
 	}, []);
 
-	// useEffect(() => {
-	// 	fetch(
-	// 		`${tmdbBaseURL}popular?api_key=${process.env.TMDB_API_KEY}&language=en-US`
-	// 	)
-	// 		.then((res) => res.json())
-	// 		.then((data) => setPopularMovies(data.results));
-	// }, []);
-
-	// // TOP RATED
-	// useEffect(() => {
-	// 	fetch(
-	// 		`${tmdbBaseURL}/popular?api_key=${process.env.TMDB_API_KEY}&language=en-US`
-	// 	)
-	// 		.then((res) => res.json())
-	// 		.then((data) => setTopRatedMovies(data.results));
-	// }, []);
-
-	// // FOR YOU
 	useEffect(() => {
-	const fetchMovies = async () => {
-		try {
-			const data = await axios.get(`${lambdaURL}?userId=2`);
-			console.log(data);
-			// setForYouMovies(data);
-		} catch (err) {
-			console.log("Error in lambda: ", err);
+		const getUser = async () => {
+			try {
+				const response = await axios.get(
+					`${lambdaUserURL}?userId=${userName}`
+				);
+				console.log("userId is: ", response);
+				// setUserId()
+			} catch (error) {
+				console.error("Error fetching movies:", error);
+			}
+		};
+
+		const fetchMovies = async () => {
+			try {
+				const response = await axios.get(
+					`${lambdaMovieURL}?userId=${userId}`
+				);
+				const data = response.data;
+
+				const fetchPromises = data.map((movie) => {
+					const tmdbId = movie.tmdbId.toString().split(".")[0];
+
+					return fetch(
+						`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
+					).then((res) => res.json());
+				});
+
+				const movies = await Promise.all(fetchPromises);
+				console.log("movies: ", movies);
+
+				setForYouMovies(movies);
+			} catch (error) {
+				console.error("Error fetching movies:", error);
+			}
+		};
+
+		if (user) {
+			getUser();
+			fetchMovies();
 		}
-		// setForYouMovies(data.data);
-	};
-
-
-		fetchMovies();
 	}, []);
 
 	return (
@@ -101,6 +114,18 @@ const Home = () => {
 				</Carousel>
 				<MovieList type="popular" />
 				<MovieList type="top_rated" />
+				<div className="movie__list">
+					<h2 className="list__title">FOR YOU</h2>
+					{forYouMovies.length > 0 ? (
+						<div className="list__cards">
+							{forYouMovies.map((movie) => (
+								<Cards movie={movie} />
+							))}
+						</div>
+					) : (
+						"Login before you can see your recommendations"
+					)}
+				</div>
 			</div>
 		</>
 	);

@@ -1,11 +1,10 @@
 import axios from "axios";
 
 export const tmdbBaseURL = "https://api.themoviedb.org/3/movie/";
-export const lambdaURL =
+export const lambdaMovieURL =
 	"https://wwirbvcvlahqvbf5orxcxd2eeq0mqkho.lambda-url.ap-south-1.on.aws/";
-// usage => https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US
-
-// export const baseURL = "http://localhost:5001/yumyumyard-eb507/us-central1/app";
+export const lambdaUserURL =
+	"https://scygmhb6obxns6ui3ubgwpeabm0sydit.lambda-url.ap-south-1.on.aws/";
 
 // // Verify the user's JWT token
 // export const validateUserJWTToken = async (token) => {

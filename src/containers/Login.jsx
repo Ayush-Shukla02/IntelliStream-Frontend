@@ -15,7 +15,6 @@ import {
 	alertWarning,
 } from "../context/actions/alertActions";
 import { Auth } from "aws-amplify";
-import { personalize_run } from "../api/personalize";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -47,20 +46,20 @@ const Login = () => {
 			dispatch(setUserDetails(curr_user));
 			console.log("User logged in:", curr_user);
 		} catch (err) {
-			dispatch(alertWarning(err.message));
-			setTimeout(() => {
-				dispatch(alertNull());
-			}, 3000);
+			// dispatch(alertWarning(err.message));
+			// setTimeout(() => {
+			// 	dispatch(alertNull());
+			// }, 3000);
 			console.log(err.message);
 		}
 	};
 
 	const handleRegister = async () => {
 		if (password !== confirmPassword) {
-			dispatch(alertWarning("Passwords do not match"));
-			setTimeout(() => {
-				dispatch(alertNull());
-			}, 3000);
+			// dispatch(alertWarning("Passwords do not match"));
+			// setTimeout(() => {
+			// 	dispatch(alertNull());
+			// }, 3000);
 			return;
 		}
 		try {
@@ -85,6 +84,12 @@ const Login = () => {
 			// user = temporary_user;
 			// dispatch(setUserDetails(user));
 			console.log("Email verified successfully");
+			setIsSignUp(false);
+			setIsRegistered(false);
+			// dispatch(alertInfo("Email verified successfully"));
+			// setTimeout(() => {
+			// 	dispatch(alertNull());
+			// }, 3000);
 		} catch (err) {
 			console.log("error in verification: ", err.message);
 		}
@@ -170,7 +175,10 @@ const Login = () => {
 								<motion.button
 									{...buttonClick}
 									className="text-red-400 underline cursor-pointer bg-transparent"
-									onClick={() => setIsSignUp(false)}
+									onClick={() => {
+										setIsSignUp(false);
+										setIsRegistered(false);
+									}}
 								>
 									Sign In
 								</motion.button>{" "}

@@ -7,7 +7,7 @@ import { buttonClick } from "../animations";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { validateUserJWTToken } from "../api";
+import { getMovie, validateUserJWTToken } from "../api";
 import { setUserDetails } from "../context/actions/userActions";
 import {
 	alertInfo,
@@ -32,8 +32,6 @@ const Login = () => {
 
 	useEffect(() => {
 		if (user) {
-			// query on lambda
-
 			// personalize_run(user);
 
 			navigate("/", { replace: true });

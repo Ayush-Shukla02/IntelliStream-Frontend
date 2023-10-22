@@ -1,5 +1,10 @@
 import axios from "axios";
 
+export const tmdbBaseURL = "https://api.themoviedb.org/3/movie/";
+export const lambdaURL =
+	"https://wwirbvcvlahqvbf5orxcxd2eeq0mqkho.lambda-url.ap-south-1.on.aws/";
+// usage => https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US
+
 // export const baseURL = "http://localhost:5001/yumyumyard-eb507/us-central1/app";
 
 // // Verify the user's JWT token
@@ -17,16 +22,28 @@ import axios from "axios";
 // 	}
 // };
 
-// // Add a new product to the database
-// export const addNewProduct = async (data) => {
-// 	try {
-// 		const res = await axios.post(`${baseURL}/api/products/create`, {
-// 			...data,
-// 		});
-// 		return res.data.data;
-// 	} catch (err) {
-// 		return null;
-// 	}
+// Get recommended movies from recommender and the TMDB movie ID
+// export const getMovie = async () => {
+// 	fetch(
+// 		`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+// 	)
+// 		.then((res) => res.json())
+// 		.then((data) => );
+
+// try {
+// 	console.log("entered getMovie");
+// 	const res = await axios.get(
+// 		`${tmdbBaseURL}/popular?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+// 	);
+
+// 	console.log("res.data: ");
+
+// 	console.log(res.data);
+// 	return res.data;
+// } catch (err) {
+// 	console.log("Error: ", err.message);
+// 	return null;
+// }
 // };
 
 // // Get all products from the database

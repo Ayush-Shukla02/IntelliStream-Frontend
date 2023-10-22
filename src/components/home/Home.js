@@ -5,11 +5,16 @@ import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import MovieList from "../movieList/movieList";
 import Header from "../Header";
+import { tmdbBaseURL, lambdaURL } from "../../api";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Home = () => {
 	const [popularMovies, setPopularMovies] = useState([]);
 	const [topRatedMovies, setTopRatedMovies] = useState([]);
 	const [forYouMovies, setForYouMovies] = useState([]);
+
+	const user = useSelector((state) => state.user);
 
 	useEffect(() => {
 		fetch(
@@ -19,23 +24,39 @@ const Home = () => {
 			.then((data) => setPopularMovies(data.results));
 	}, []);
 
-	// TOP RATED
-	useEffect(() => {
-		fetch(
-			"https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US"
-		)
-			.then((res) => res.json())
-			.then((data) => setTopRatedMovies(data.results));
-	}, []);
-
-	// FOR YOU
 	// useEffect(() => {
 	// 	fetch(
-	// 		"https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US"
+	// 		`${tmdbBaseURL}popular?api_key=${process.env.TMDB_API_KEY}&language=en-US`
 	// 	)
 	// 		.then((res) => res.json())
-	// 		.then((data) => setForYouMovies(data.results));
+	// 		.then((data) => setPopularMovies(data.results));
 	// }, []);
+
+	// // TOP RATED
+	// useEffect(() => {
+	// 	fetch(
+	// 		`${tmdbBaseURL}/popular?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+	// 	)
+	// 		.then((res) => res.json())
+	// 		.then((data) => setTopRatedMovies(data.results));
+	// }, []);
+
+	// // FOR YOU
+	useEffect(() => {
+	const fetchMovies = async () => {
+		try {
+			const data = await axios.get(`${lambdaURL}?userId=2`);
+			console.log(data);
+			// setForYouMovies(data);
+		} catch (err) {
+			console.log("Error in lambda: ", err);
+		}
+		// setForYouMovies(data.data);
+	};
+
+
+		fetchMovies();
+	}, []);
 
 	return (
 		<>
@@ -78,7 +99,8 @@ const Home = () => {
 						</Link>
 					))}
 				</Carousel>
-				<MovieList />
+				<MovieList type="popular" />
+				<MovieList type="top_rated" />
 			</div>
 		</>
 	);

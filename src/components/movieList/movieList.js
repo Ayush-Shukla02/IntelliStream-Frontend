@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./movieList.css";
-import { useParams } from "react-router-dom";
 import Cards from "../card/card";
 
-const MovieList = () => {
+const MovieList = ({ type }) => {
 	const [movieList, setMovieList] = useState([]);
-	const { type } = useParams();
 
-	useEffect(() => {
-		getData();
-	}, []);
+	// useEffect(() => {
+	// 	getData();
+	// }, []);
 
 	useEffect(() => {
 		getData();
@@ -17,19 +15,22 @@ const MovieList = () => {
 
 	const getData = () => {
 		fetch(
-			`https://api.themoviedb.org/3/movie/${
-				type ? type : "popular"
-			}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
+			`https://api.themoviedb.org/3/movie/${type}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
 		)
 			.then((res) => res.json())
-			.then((data) => setMovieList(data.results));
+			.then((data) => {
+				if (data.results) {
+					setMovieList(data.results);
+				}
+			})
+			.catch((error) => {
+				console.error("Error fetching data:", error);
+			});
 	};
 
 	return (
 		<div className="movie__list">
-			<h2 className="list__title">
-				{(type ? type : "POPULAR").toUpperCase()}
-			</h2>
+			<h2 className="list__title">{type.toUpperCase()}</h2>
 			<div className="list__cards">
 				{movieList.map((movie) => (
 					<Cards movie={movie} />

@@ -12,13 +12,11 @@ import Cards from "../card/card";
 
 const Home = () => {
 	const [popularMovies, setPopularMovies] = useState([]);
-	const [topRatedMovies, setTopRatedMovies] = useState([]);
 	const [forYouMovies, setForYouMovies] = useState([]);
 	const [userId, setUserId] = useState("");
 
 	const user = useSelector((state) => state.user);
-
-	const userName = user ? user.userName : null;
+	console.log("user: ", user);
 
 	useEffect(() => {
 		fetch(
@@ -31,8 +29,9 @@ const Home = () => {
 	useEffect(() => {
 		const getUser = async () => {
 			try {
+				console.log("Username: ", user.username);
 				const response = await axios.get(
-					`${lambdaUserURL}?userId=${userName}`
+					`${lambdaUserURL}?userId=${user.username}`
 				);
 				console.log("userId is: ", response);
 				// setUserId()

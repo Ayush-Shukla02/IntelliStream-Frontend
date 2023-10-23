@@ -154,5 +154,7 @@ accuracy of the recommendations can be calculated simply by measuring how many t
 
 3) add name of recipe used in personalize ?
 
+4) fix formatting , add images , looks like text wall not pleasing at all
+
 
 </details>

@@ -55,7 +55,8 @@ Data is updated in batch mode to ensure recommendations remain up-to-date.Batch 
 
 In order to establish a substantial competitive advantage relative to existing recommender systems, we believe that Intellistream should possess the capability to integrate evolving user emotional states when suggesting content.To accomplish this, we propose an approach leveraging user reviews for movies, accessible in the "tags.csv" dataset. We will employ sentiment analysis techniques on this dataset to understand the mood associated with each movie. Then, we'll assess the user's mood and recommend movies that match their current emotions.
 
-**Judging Users Mood**
+<h3>Judging Users Mood</h3>
+
 **Naive Method:** 
 Explicitly ask the user what genre they are interested in currently and provide recommendations according to their input.
 
@@ -90,8 +91,10 @@ We're incorporating an inbuilt video player into our system to showcase movie tr
 **Mood and Genre Categorization:**
 Categorize the moods, genres, and concepts recognized in the trailer into predefined groups. This could involve labeling scenes as "romantic," "action", "comedy," "dramatic”, and so on.
 Develop a structured system of moods and genres that can be employed by the recommendation system.
+
 **User Preference Profiling:**
 Build and update user profiles based on their interactions with the movie trailer. Record the user's preferences for different moods, genres, and concepts.
+
 **Recommendation Engine:**
 Integrate the user interaction and preferences into your recommendation engine.
 Use the mapping of trailer content to genres, moods, and concepts to recommend full-length movies that align with the user's preferences. For example, if a user enjoyed action-packed scenes in a trailer, the system can recommend action movies with similar scenes or moods.

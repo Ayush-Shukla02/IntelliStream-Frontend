@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./home.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -9,7 +9,7 @@ import { tmdbBaseURL, lambdaMovieURL, lambdaUserURL } from "../../api";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Cards from "../card/card";
-import  AuthContext from "../../context/AuthContext";
+import AuthContext from "../../context/AuthContext";
 
 const Home = () => {
 	const [popularMovies, setPopularMovies] = useState([]);
@@ -28,9 +28,7 @@ const Home = () => {
 			.then((data) => setPopularMovies(data.results));
 	}, []);
 
-	useEffect(() => {
-		
-	}, [user]);
+	useEffect(() => {}, [user]);
 
 	useEffect(() => {
 		const getUser = async () => {
@@ -42,7 +40,7 @@ const Home = () => {
 				console.log("userId is:", response.data.split(": ")[1]);
 				storeUserId(response.data.split(": ")[1]);
 				setUserId(response.data.split(": ")[1]);
-			} catch (error) { 	 
+			} catch (error) {
 				console.error("Error fetching movies:", error);
 			}
 		};
@@ -129,7 +127,9 @@ const Home = () => {
 							))}
 						</div>
 					) : (
-						"Login before you can see your recommendations"
+						<div className="text-white">
+							Login to see your recommendations here...
+						</div>
 					)}
 				</div>
 			</div>

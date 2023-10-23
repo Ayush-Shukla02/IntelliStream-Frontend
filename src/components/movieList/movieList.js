@@ -5,10 +5,6 @@ import Cards from "../card/card";
 const MovieList = ({ type }) => {
 	const [movieList, setMovieList] = useState([]);
 
-	// useEffect(() => {
-	// 	getData();
-	// }, []);
-
 	useEffect(() => {
 		getData();
 	}, [type]);

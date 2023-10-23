@@ -29,6 +29,10 @@ const Home = () => {
 	}, []);
 
 	useEffect(() => {
+		
+	}, [user]);
+
+	useEffect(() => {
 		const getUser = async () => {
 			try {
 				console.log("Username: ", user.username);

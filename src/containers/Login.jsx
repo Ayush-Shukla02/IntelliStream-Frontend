@@ -1,4 +1,4 @@
-import React, { useEffect, useState , useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { LoginBg, Logo } from "../assets";
 import { LoginInput } from "../components";
 import { FaEnvelope, FaLock } from "../assets/icons";
@@ -6,8 +6,7 @@ import { motion } from "framer-motion";
 import { buttonClick } from "../animations";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import  AuthContext from "../context/AuthContext";
-
+import AuthContext from "../context/AuthContext";
 
 import { getMovie, validateUserJWTToken } from "../api";
 import { setUserDetails } from "../context/actions/userActions";
@@ -25,21 +24,19 @@ const Login = () => {
 	const [isSignUp, setIsSignUp] = useState(false);
 	const [isRegistered, setIsRegistered] = useState(false);
 
-
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const user = useSelector((state) => state.user);
-	const temporary_user = null;
 	const alert = useSelector((state) => state.alert);
 
 	const { storeUser } = useContext(AuthContext);
 
 	useEffect(() => {
 		if (user) {
-			// personalize_run(user);
 			storeUser(user);
-			navigate("/", { replace: true });			
+			dispatch(setUserDetails(user));
+			navigate("/", { replace: true });
 		}
 	}, [navigate, storeUser, user]);
 
@@ -49,20 +46,12 @@ const Login = () => {
 			dispatch(setUserDetails(curr_user));
 			console.log("User logged in:", curr_user);
 		} catch (err) {
-			// dispatch(alertWarning(err.message));
-			// setTimeout(() => {
-			// 	dispatch(alertNull());
-			// }, 3000);
 			console.log(err.message);
 		}
 	};
 
 	const handleRegister = async () => {
 		if (password !== confirmPassword) {
-			// dispatch(alertWarning("Passwords do not match"));
-			// setTimeout(() => {
-			// 	dispatch(alertNull());
-			// }, 3000);
 			return;
 		}
 		try {
@@ -74,7 +63,6 @@ const Login = () => {
 				},
 			});
 			console.log("User registered:", data);
-			// temporary_user = data;
 			setIsRegistered(true);
 		} catch (err) {
 			console.log(err.message);
@@ -84,15 +72,9 @@ const Login = () => {
 	const handleVerification = async (verificationCode) => {
 		try {
 			await Auth.confirmSignUp(email, verificationCode);
-			// user = temporary_user;
-			// dispatch(setUserDetails(user));
 			console.log("Email verified successfully");
 			setIsSignUp(false);
 			setIsRegistered(false);
-			// dispatch(alertInfo("Email verified successfully"));
-			// setTimeout(() => {
-			// 	dispatch(alertNull());
-			// }, 3000);
 		} catch (err) {
 			console.log("error in verification: ", err.message);
 		}

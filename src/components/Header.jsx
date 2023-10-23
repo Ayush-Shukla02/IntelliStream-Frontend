@@ -1,30 +1,23 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Avatar, Logo } from "../assets";
 import { isActiveStyles, isNotActiveStyles } from "../utils/styles";
 import { motion } from "framer-motion";
 import { buttonClick, slideTop } from "../animations";
 import { MdLogout } from "../assets/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { setUserNull } from "../context/actions/userActions";
 import { Auth } from "aws-amplify";
-import  AuthContext from "../context/AuthContext";
-
+import AuthContext from "../context/AuthContext";
 
 const Header = () => {
-	const user = useSelector((state) => state.user);
+	const { User } = useContext(AuthContext);
 	const { deleteUser } = useContext(AuthContext);
-
-	
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	const signOut = async () => {
 		try {
 			await Auth.signOut();
-			dispatch(setUserNull());
 			navigate("/login", { replace: true });
 			deleteUser();
 			console.log("User signed out");
@@ -32,6 +25,12 @@ const Header = () => {
 			console.error("Error signing out: ", error);
 		}
 	};
+
+	useEffect(() => {
+		if (User) {
+			console.log("user found: ", User);
+		}
+	}, [User]);
 
 	return (
 		<header className="fixed backdrop-blur-md z-50 inset-x-0 top-0 flex items-center justify-between px-12 md:px-20 py-6">
@@ -63,7 +62,7 @@ const Header = () => {
 					</NavLink>
 				</ul>
 
-				{user ? (
+				{User ? (
 					<>
 						<div
 							className="relative cursor-pointer"

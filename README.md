@@ -149,7 +149,9 @@ Implementing voice recognition to enhance user experience by allowing user queri
 In our front end , we display personalized recommendations for users , top picks and 1 more thing.
 analytics - graphical representation of how many movies per genre did person watch
 accuracy of the recommendations can be calculated simply by measuring how many times does the user watch our recommended movie.
+
 2)Where to add the point - make this system run on android firebase tv 
+
 3) add name of recipe used in personalize ?
 
 

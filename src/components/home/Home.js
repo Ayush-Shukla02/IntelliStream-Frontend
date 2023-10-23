@@ -7,7 +7,6 @@ import MovieList from "../movieList/movieList";
 import Header from "../Header";
 import { tmdbBaseURL, lambdaMovieURL, lambdaUserURL } from "../../api";
 import axios from "axios";
-import { useSelector } from "react-redux";
 import Cards from "../card/card";
 import AuthContext from "../../context/AuthContext";
 
@@ -17,8 +16,8 @@ const Home = () => {
 	const [userId, setUserId] = useState("");
 	const { storeUserId } = useContext(AuthContext);
 
-	const user = useSelector((state) => state.user);
-	console.log("user: ", user);
+	const { User } = useContext(AuthContext);
+	console.log("user at home: ", User);
 
 	useEffect(() => {
 		fetch(
@@ -28,20 +27,16 @@ const Home = () => {
 			.then((data) => setPopularMovies(data.results));
 	}, []);
 
-	useEffect(() => {}, [user]);
-
 	useEffect(() => {
 		const getUser = async () => {
 			try {
-				console.log("Username: ", user.username);
 				const response = await axios.get(
-					`${lambdaUserURL}?userId=${user.username}`
+					`${lambdaUserURL}?userId=${User.username}`
 				);
-				console.log("userId is:", response.data.split(": ")[1]);
 				storeUserId(response.data.split(": ")[1]);
 				setUserId(response.data.split(": ")[1]);
 			} catch (error) {
-				console.error("Error fetching movies:", error);
+				console.error("Error fetching User:", error);
 			}
 		};
 
@@ -61,7 +56,6 @@ const Home = () => {
 				});
 
 				const movies = await Promise.all(fetchPromises);
-				console.log("movies: ", movies);
 
 				setForYouMovies(movies);
 			} catch (error) {
@@ -69,11 +63,15 @@ const Home = () => {
 			}
 		};
 
-		if (user) {
+		if (User) {
 			getUser();
-			fetchMovies();
+
+			if (userId) {
+				console.log("UserId: ", userId);
+				fetchMovies();
+			}
 		}
-	}, []);
+	}, [User, userId]);
 
 	return (
 		<>

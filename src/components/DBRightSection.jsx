@@ -12,10 +12,7 @@ const DBRightSection = () => {
 				<Routes>
 					<Route path="/" element={<DBHome />} />
 					<Route path="/home" element={<DBHome />} />
-					<Route
-						path="/history"
-						element={<DBHistory movies={[]} />}
-					/>
+					<Route path="/history" element={<DBHistory />} />
 					{/* <Route path="/items" element={<DBItems />} />
 					<Route path="/newItem" element={<DBNewItem />} />
 					<Route path="/users" element={<DBUsers />} /> */}

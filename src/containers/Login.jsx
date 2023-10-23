@@ -5,16 +5,7 @@ import { FaEnvelope, FaLock } from "../assets/icons";
 import { motion } from "framer-motion";
 import { buttonClick } from "../animations";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import AuthContext from "../context/AuthContext";
-
-import { getMovie, validateUserJWTToken } from "../api";
-import { setUserDetails } from "../context/actions/userActions";
-import {
-	alertInfo,
-	alertNull,
-	alertWarning,
-} from "../context/actions/alertActions";
 import { Auth } from "aws-amplify";
 
 const Login = () => {
@@ -23,27 +14,23 @@ const Login = () => {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [isSignUp, setIsSignUp] = useState(false);
 	const [isRegistered, setIsRegistered] = useState(false);
+	const [user, setUser] = useState(null);
 
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
-
-	const user = useSelector((state) => state.user);
-	const alert = useSelector((state) => state.alert);
 
 	const { storeUser } = useContext(AuthContext);
 
 	useEffect(() => {
 		if (user) {
 			storeUser(user);
-			dispatch(setUserDetails(user));
 			navigate("/", { replace: true });
 		}
-	}, [navigate, storeUser, user]);
+	}, [user]);
 
 	const handleLogin = async () => {
 		try {
 			const curr_user = await Auth.signIn(email, password);
-			dispatch(setUserDetails(curr_user));
+			setUser(curr_user);
 			console.log("User logged in:", curr_user);
 		} catch (err) {
 			console.log(err.message);

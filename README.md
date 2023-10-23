@@ -7,6 +7,7 @@
 FireTV IntelliStream leverages advanced AI to account for evolving preferences, and provide diverse recommendations ensuring they spend less time searching and more time immersed in content. The Frontend is built using Reactjs and backend is fully hosted on AWS.
 
 
+<details>
 <h2>PHASE 1 - Prototype</h2>
 
 
@@ -46,10 +47,10 @@ Preprocessed data is used to train machine learning models within AWS Personaliz
 Data is updated in batch mode to ensure recommendations remain up-to-date.Batch recommendations are generated periodically for large sets of users in an offline process.The frequency of retraining depends on factors such as how quickly user behavior and preferences change and the volume of new data collected. The goal is to ensure that the recommendations remain relevant. 
 
 
+</details>
 
 
-
-
+<details>
 
 <h2>PHASE 2 - Basic Enhancements</h2>
 
@@ -75,10 +76,11 @@ Filtering in AWS Personalize allows you to narrow down the set of recommended it
 
   
 
+</details>
 
 
 
-
+<details>
 
 <h2>Phase 3 - suggest name for this i forhot what jissu said</h2>
 
@@ -100,7 +102,8 @@ Integrate the user interaction and preferences into your recommendation engine.
 Use the mapping of trailer content to genres, moods, and concepts to recommend full-length movies that align with the user's preferences. For example, if a user enjoyed action-packed scenes in a trailer, the system can recommend action movies with similar scenes or moods.
 
 
-
+</details>
+<details>
 
 <h2>PHASE 4 - Future Scope </h2>
 Once Intellistream is fully implemented, it's essential to maintain an iterative approach, consistently refining based on feedback and technological advancements.
@@ -131,3 +134,4 @@ Implementing voice recognition to enhance user experience by allowing user queri
 
 
 
+</details>

@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 	};
 
 	const storeUserId = (userId) => {
-		localStorage.setItem("userId", JSON.stringify(userId));
+		localStorage.setItem("userId", userId);
 		console.log("stored userId");
 	};
 

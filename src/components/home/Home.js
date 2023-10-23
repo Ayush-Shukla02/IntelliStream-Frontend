@@ -31,6 +31,7 @@ const Home = () => {
 		const response = await axios.get(`${lambdaUserURL}?userId=${userName}`);
 		// console.log(User);
 		console.log("response ", response.data.split(": ")[1]);
+
 		storeUserId(response.data.split(": ")[1]);
 		setUserId(response.data.split(": ")[1]);
 	};
@@ -68,6 +69,7 @@ const Home = () => {
 			getUser();
 		} else if (userId) {
 			// console.log("UserId: ", userId);
+			// console.log(typeof userId);
 			fetchMovies();
 		}
 	}, [User, userId]);

@@ -1,4 +1,4 @@
-<p align="center"><img src="logo.jpeg" alt="logo" width="200" align="center"/></p>
+<p align="center"><img src="logo.jpeg" alt="logo" width="250" align="center"/></p>
 
 # IntelliStream
 

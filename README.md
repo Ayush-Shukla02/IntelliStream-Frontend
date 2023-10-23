@@ -13,7 +13,7 @@ FireTV IntelliStream leverages advanced AI to account for evolving preferences, 
 <h3>WORKFLOW</h3>
 
 **User Authentication:**
-AWS Amplify and AWS Cognito handle user authentication. Amplify provides a user authentication interface. Cognito User Pools act as user directories for user management and authentication. Cognito User Pools store user profiles and authentication tokens. A unique user ID from Cognito is mapped to S3 bucket data. 
+AWS Amplify and AWS Cognito handle user authentication. Amplify provides a user authentication interface. Cognito User Pools act as user directories for user management and authentication. Cognito User Pools store user profiles and authentication tokens. A unique user ID from Cognito is mapped to S3 bucket data.
 **System Architecture:**
 Frontend communicates with AWS Lambda functions via an HTTP API Gateway. This architecture ensures efficient data flow and request handling. 
 **Movie Recommendations:**
@@ -87,20 +87,27 @@ Use the mapping of trailer content to genres, moods, and concepts to recommend f
 
 <h2>PHASE 4 - Future Scope </h2>
 Once Intellistream is fully implemented, it's essential to maintain an iterative approach, consistently refining based on feedback and technological advancements.
+
 <h3>Business Relevance/Scope/Opportunity:</h3>
+
 **Audience Expansion:** 
 As Intellistream refines its recommendation engine, it could attract a broader audience, from niche movie buffs to mainstream viewers, enhancing Intellistream’s market share.
+
 **Monetization Channels:** 
 Precise recommendations mean users could be more inclined to purchase or rent premium content, providing a potential revenue boost. Additionally, partnerships with content producers can be established for exclusive early releases.
+
 **Brand Loyalty:** 
 A system that ‘understands’ user preferences can enhance brand loyalty. Satisfied users are more likely to recommend FireTV to peers, organically increasing its user base.
 Personalized Ad Recommendations: Beyond content, tailor ads to individual users, ensuring they are relevant, thereby increasing click-through rates and potential purchases.
 
 <h3>Improvements/Modifications/More Features</h3>
+
 **Cross-device Integration:** 
 Recommendations can be optimized based on user activity across other Amazon devices or services, like Kindle or Amazon Music, for a more holistic understanding of preferences.
+
 **Predictive Analysis:** 
 Use AI to predict future content trends or genres that will be popular, ensuring FireTV always stays one step ahead in content procurement and production.
+
 **Multilingual Voice Commands:** 
 Implementing voice recognition to enhance user experience by allowing user queries that follow the pattern "find me something similar to <this>." This integration must be designed to comprehend multiple languages and dialects, catering to a global audience.
 

@@ -5,7 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import MovieList from "../movieList/movieList";
 import Header from "../Header";
-import { tmdbBaseURL, lambdaMovieURL, lambdaUserURL } from "../../api";
+import { lambdaMovieURL, lambdaUserURL } from "../../api";
 import axios from "axios";
 import Cards from "../card/card";
 import AuthContext from "../../context/AuthContext";

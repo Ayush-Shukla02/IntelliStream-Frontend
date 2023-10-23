@@ -2,69 +2,86 @@ import React, { useContext, useEffect, useState } from "react";
 import Cards from "../card/card";
 import "./dashboard.css";
 import AuthContext from "../../context/AuthContext";
-import { lambdaGenreURL } from "../../api";
+import { lambdaStatsURL } from "../../api";
 import axios from "axios";
 
 const DBHistory = () => {
-	let { User, userId } = useContext(AuthContext);
+	const { User, userId } = useContext(AuthContext);
 
+	const [recentMovies, setRecentMovies] = useState(null);
 	const [historyMovies, setHistoryMovies] = useState([]);
 
 	const fetchMovies = async () => {
+		const fetchPromises = recentMovies.map((movie) => {
+			const tmdbId = movie.tmdbId.toString().split(".")[0];
+			// console.log(tmdbId);
+
+			return fetch(
+				`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
+			).then((res) => res.json());
+		});
+
+		const movies = await Promise.all(fetchPromises);
+		console.log("movies: ", movies);
+
+		setHistoryMovies(movies);
+	};
+
+	const fetchRecent = async () => {
 		try {
-			// console.log("userId: ", userId);
 			const response = await axios.get(
-				`${lambdaGenreURL}?userId=${userId}`
+				`${lambdaStatsURL}?userId=${userId}`
 			);
 			const data = response.data;
-
-			// console.log("response received: ", data);
-
-			// const fetchPromises = data.map((movie) => {
-			// 	const tmdbId = movie.tmdbId.toString().split(".")[0];
-
-			// 	return fetch(
-			// 		`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
-			// 	).then((res) => res.json());
-			// });
-
-			// const movies = await Promise.all(fetchPromises);
-			// console.log("movies: ", movies);
-
-			// setHistoryMovies(movies);
+			console.log(data.recent_movies);
+			setRecentMovies(data.recent_movies);
 		} catch (error) {
-			console.error("Error fetching movies:", error);
+			console.error("Error fetching movies in history:", error);
 		}
 	};
 
 	useEffect(() => {
-		if (userId) {
+		if (userId && !recentMovies) {
+			fetchRecent();
+			// console.log("fetching recent: ");
+		}
+		if (recentMovies) {
+			console.log("Recent Movies:", recentMovies);
 			fetchMovies();
 		}
-	}, [userId]);
+
+		if (historyMovies.length > 0) {
+			console.log("History Movies:", historyMovies);
+		}
+	}, [userId, recentMovies]);
 
 	return (
 		<div className="flex items-center justify-center flex-col pt-6 w-full gap-4">
-			{historyMovies.length > 0 ? (
-				<>
-					<h1 className="text-[50px] text-white font-semibold">
-						Your Watch History
-					</h1>
-					<div className="movie__list">
-						<h2 className="list__title">FOR YOU</h2>
-						<div className="list__cards">
-							{historyMovies.map((movie) => (
-								<Cards movie={movie} />
-							))}
+			{User ? (
+				historyMovies.length > 0 ? (
+					<>
+						<h1 className="text-[50px] text-white font-semibold">
+							Your Watch History
+						</h1>
+						<div className="movie__list">
+							<div className="list__cards">
+								{historyMovies.map((movie) => (
+									<Cards key={movie.id} movie={movie} />
+								))}
+							</div>
 						</div>
-					</div>
-				</>
+					</>
+				) : (
+					<>
+						<h1 className="text-[50px] text-white font-semibold">
+							Watch something to show your history here.
+						</h1>
+					</>
+				)
 			) : (
-				<>
-					<h1 className="text-[50px] text-white font-semibold">
-						Watch something to show you history here.
-					</h1>
-				</>
+				<h1 className="text-[50px] text-white font-semibold">
+					Sign in to view your history.
+				</h1>
 			)}
 		</div>
 	);

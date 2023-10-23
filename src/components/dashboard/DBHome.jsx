@@ -6,7 +6,7 @@ import axios from "axios";
 import { CChart } from "@coreui/react-chartjs";
 
 const DBHome = () => {
-	let { User, userId } = useContext(AuthContext);
+	const { User, userId } = useContext(AuthContext);
 	const [data, setData] = useState({});
 	// console.log("user at history: ", User);
 	// console.log("userid at history: ", userId);

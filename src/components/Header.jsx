@@ -56,6 +56,14 @@ const Header = () => {
 						className={({ isActive }) =>
 							isActive ? isActiveStyles : isNotActiveStyles
 						}
+						to={"/search"}
+					>
+						Search
+					</NavLink>
+					<NavLink
+						className={({ isActive }) =>
+							isActive ? isActiveStyles : isNotActiveStyles
+						}
 						to={"/dashboard"}
 					>
 						Dashboard

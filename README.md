@@ -2,15 +2,15 @@
 
 
 
-#INTELLISTREAM
+<h1>INTELLISTREAM</h1>
 
 FireTV IntelliStream leverages advanced AI to account for evolving preferences, and provide diverse recommendations ensuring they spend less time searching and more time immersed in content. The Frontend is built using Reactjs and backend is fully hosted on AWS.
 
 
-##PHASE 1 - Prototype
+<h2>PHASE 1 - Prototype</h2>
 
 
-###WORKFLOW
+<h3>WORKFLOW</h3>
 
 **User Authentication:**
 AWS Amplify and AWS Cognito handle user authentication. Amplify provides a user authentication interface. Cognito User Pools act as user directories for user management and authentication. Cognito User Pools store user profiles and authentication tokens. A unique user ID from Cognito is mapped to S3 bucket data. 
@@ -22,7 +22,7 @@ AWS Personalize provides personalized movie recommendations. A mapping file ("Fi
 User interactions include activities like watching, clicking, liking, and disliking movies.These interactions contribute to user profiles and personalized recommendations.
 
 
-###AWS PERSONALIZE - working and retraining
+<h3>AWS PERSONALIZE - working and retraining</h3>
 
 **MovieLens Dataset and AWS Personalize:**
 The MovieLens dataset is leveraged to generate personalized recommendations using AWS Personalize.This dataset is stored in an unstructured format on AWS S3.
@@ -43,7 +43,7 @@ Data is updated in batch mode to ensure recommendations remain up-to-date.Batch 
 
 
 
-##PHASE 2 - Basic Enhancements
+<h2>PHASE 2 - Basic Enhancements</h2>
 
 In order to establish a substantial competitive advantage relative to existing recommender systems, we believe that Intellistream should possess the capability to integrate evolving user emotional states when suggesting content.To accomplish this, we propose an approach leveraging user reviews for movies, accessible in the "tags.csv" dataset. We will employ sentiment analysis techniques on this dataset to understand the mood associated with each movie. Then, we'll assess the user's mood and recommend movies that match their current emotions.
 
@@ -65,7 +65,7 @@ Filtering in AWS Personalize allows you to narrow down the set of recommended it
 
 
 
-##Phase 3 - suggest name for this i forhot what jissu said
+<h2>Phase 3 - suggest name for this i forhot what jissu said</h2>
 
 After encapsulating user mood into our recommender system , we now want to judge users’ likings and preferences before recommending them content to stream.
 We want to maintain a user profile which contains information about user’s interest in different genres. Doing so will enable us to suggest collaborative recommendations . 
@@ -85,9 +85,9 @@ Use the mapping of trailer content to genres, moods, and concepts to recommend f
 
 
 
-##PHASE 4 - Future Scope
+<h2>PHASE 4 - Future Scope </h2>
 Once Intellistream is fully implemented, it's essential to maintain an iterative approach, consistently refining based on feedback and technological advancements.
-###Business Relevance/Scope/Opportunity:
+<h3>Business Relevance/Scope/Opportunity:</h3>
 **Audience Expansion:** 
 As Intellistream refines its recommendation engine, it could attract a broader audience, from niche movie buffs to mainstream viewers, enhancing Intellistream’s market share.
 **Monetization Channels:** 
@@ -96,14 +96,13 @@ Precise recommendations mean users could be more inclined to purchase or rent pr
 A system that ‘understands’ user preferences can enhance brand loyalty. Satisfied users are more likely to recommend FireTV to peers, organically increasing its user base.
 Personalized Ad Recommendations: Beyond content, tailor ads to individual users, ensuring they are relevant, thereby increasing click-through rates and potential purchases.
 
-###Improvements/Modifications/More Features
+<h3>Improvements/Modifications/More Features</h3>
 **Cross-device Integration:** 
 Recommendations can be optimized based on user activity across other Amazon devices or services, like Kindle or Amazon Music, for a more holistic understanding of preferences.
 **Predictive Analysis:** 
 Use AI to predict future content trends or genres that will be popular, ensuring FireTV always stays one step ahead in content procurement and production.
 **Multilingual Voice Commands:** 
 Implementing voice recognition to enhance user experience by allowing user queries that follow the pattern "find me something similar to <this>." This integration must be designed to comprehend multiple languages and dialects, catering to a global audience.
-
 
 
 

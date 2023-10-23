@@ -1,7 +1,4 @@
-
-## Screenshots
-
-![](logo.jpeg)
+![](logo.jpeg=150x150)
 
 
 # IntelliStream

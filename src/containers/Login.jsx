@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useContext } from "react";
 import { LoginBg, Logo } from "../assets";
 import { LoginInput } from "../components";
 import { FaEnvelope, FaLock } from "../assets/icons";
@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { buttonClick } from "../animations";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import  AuthContext from "../context/AuthContext";
+
 
 import { getMovie, validateUserJWTToken } from "../api";
 import { setUserDetails } from "../context/actions/userActions";
@@ -23,6 +25,7 @@ const Login = () => {
 	const [isSignUp, setIsSignUp] = useState(false);
 	const [isRegistered, setIsRegistered] = useState(false);
 
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -30,13 +33,15 @@ const Login = () => {
 	const temporary_user = null;
 	const alert = useSelector((state) => state.alert);
 
+	const { storeUser } = useContext(AuthContext);
+
 	useEffect(() => {
 		if (user) {
 			// personalize_run(user);
-
-			navigate("/", { replace: true });
+			storeUser(user);
+			navigate("/", { replace: true });			
 		}
-	}, [user]);
+	}, [navigate, storeUser, user]);
 
 	const handleLogin = async () => {
 		try {

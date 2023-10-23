@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Avatar, Logo } from "../assets";
 import { isActiveStyles, isNotActiveStyles } from "../utils/styles";
@@ -8,9 +8,14 @@ import { MdLogout } from "../assets/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserNull } from "../context/actions/userActions";
 import { Auth } from "aws-amplify";
+import  AuthContext from "../context/AuthContext";
+
 
 const Header = () => {
 	const user = useSelector((state) => state.user);
+	const { deleteUser } = useContext(AuthContext);
+
+	
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const navigate = useNavigate();
@@ -21,6 +26,7 @@ const Header = () => {
 			await Auth.signOut();
 			dispatch(setUserNull());
 			navigate("/login", { replace: true });
+			deleteUser();
 			console.log("User signed out");
 		} catch (error) {
 			console.error("Error signing out: ", error);

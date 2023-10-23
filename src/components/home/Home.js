@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext} from "react";
 import "./home.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -9,11 +9,13 @@ import { tmdbBaseURL, lambdaMovieURL, lambdaUserURL } from "../../api";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Cards from "../card/card";
+import  AuthContext from "../../context/AuthContext";
 
 const Home = () => {
 	const [popularMovies, setPopularMovies] = useState([]);
 	const [forYouMovies, setForYouMovies] = useState([]);
 	const [userId, setUserId] = useState("");
+	const { storeUserId } = useContext(AuthContext);
 
 	const user = useSelector((state) => state.user);
 	console.log("user: ", user);
@@ -33,9 +35,10 @@ const Home = () => {
 				const response = await axios.get(
 					`${lambdaUserURL}?userId=${user.username}`
 				);
-				console.log("userId is: ", response);
-				// setUserId()
-			} catch (error) {
+				console.log("userId is:", response.data.split(": ")[1]);
+				storeUserId(response.data.split(": ")[1]);
+				setUserId(response.data.split(": ")[1]);
+			} catch (error) { 	 
 				console.error("Error fetching movies:", error);
 			}
 		};

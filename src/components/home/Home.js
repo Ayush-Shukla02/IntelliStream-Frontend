@@ -13,11 +13,11 @@ import AuthContext from "../../context/AuthContext";
 const Home = () => {
 	const [popularMovies, setPopularMovies] = useState([]);
 	const [forYouMovies, setForYouMovies] = useState([]);
-	const [userId, setUserId] = useState("");
+	const [userId, setUserId] = useState(null);
+	const [userName, setUserName] = useState(null);
 	const { storeUserId } = useContext(AuthContext);
 
 	const { User } = useContext(AuthContext);
-	console.log("user at home: ", User);
 
 	useEffect(() => {
 		fetch(
@@ -27,49 +27,48 @@ const Home = () => {
 			.then((data) => setPopularMovies(data.results));
 	}, []);
 
+	const getUser = async () => {
+		const response = await axios.get(`${lambdaUserURL}?userId=${userName}`);
+		// console.log(User);
+		console.log("response ", response.data.split(": ")[1]);
+		storeUserId(response.data.split(": ")[1]);
+		setUserId(response.data.split(": ")[1]);
+	};
+
+	const fetchMovies = async () => {
+		try {
+			const response = await axios.get(
+				`${lambdaMovieURL}?userId=${userId}`
+			);
+			const data = response.data;
+
+			const fetchPromises = data.map((movie) => {
+				const tmdbId = movie.tmdbId.toString().split(".")[0];
+
+				return fetch(
+					`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
+				).then((res) => res.json());
+			});
+
+			const movies = await Promise.all(fetchPromises);
+
+			setForYouMovies(movies);
+		} catch (error) {
+			console.error("Error fetching movies:", error);
+		}
+	};
+
 	useEffect(() => {
-		const getUser = async () => {
-			try {
-				const response = await axios.get(
-					`${lambdaUserURL}?userId=${User.username}`
-				);
-				storeUserId(response.data.split(": ")[1]);
-				setUserId(response.data.split(": ")[1]);
-			} catch (error) {
-				console.error("Error fetching User:", error);
-			}
-		};
-
-		const fetchMovies = async () => {
-			try {
-				const response = await axios.get(
-					`${lambdaMovieURL}?userId=${userId}`
-				);
-				const data = response.data;
-
-				const fetchPromises = data.map((movie) => {
-					const tmdbId = movie.tmdbId.toString().split(".")[0];
-
-					return fetch(
-						`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
-					).then((res) => res.json());
-				});
-
-				const movies = await Promise.all(fetchPromises);
-
-				setForYouMovies(movies);
-			} catch (error) {
-				console.error("Error fetching movies:", error);
-			}
-		};
-
-		if (User) {
+		if (User && !userId) {
+			// console.log(
+			// 	"user at home: ",
+			// 	User.split(",")[0].split(":")[1].split('"')[1]
+			// );
+			setUserName(User.split(",")[0].split(":")[1].split('"')[1]);
 			getUser();
-
-			if (userId) {
-				console.log("UserId: ", userId);
-				fetchMovies();
-			}
+		} else if (userId) {
+			// console.log("UserId: ", userId);
+			fetchMovies();
 		}
 	}, [User, userId]);
 

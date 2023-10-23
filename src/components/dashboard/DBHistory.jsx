@@ -7,6 +7,8 @@ import axios from "axios";
 
 const DBHistory = () => {
 	const { User, userId } = useContext(AuthContext);
+	console.log("user at history: ", User);
+	console.log("userid at history: ", userId);
 
 	const [historyMovies, setHistoryMovies] = useState([]);
 

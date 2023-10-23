@@ -1,5 +1,4 @@
-![](logo.jpeg=150x150)
-
+<p align="center"><img src="logo.jpeg" alt="logo" width="200" align="center"/></p>
 
 # IntelliStream
 

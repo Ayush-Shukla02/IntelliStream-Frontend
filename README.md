@@ -14,10 +14,13 @@ FireTV IntelliStream leverages advanced AI to account for evolving preferences, 
 
 **User Authentication:**
 AWS Amplify and AWS Cognito handle user authentication. Amplify provides a user authentication interface. Cognito User Pools act as user directories for user management and authentication. Cognito User Pools store user profiles and authentication tokens. A unique user ID from Cognito is mapped to S3 bucket data.
+
 **System Architecture:**
 Frontend communicates with AWS Lambda functions via an HTTP API Gateway. This architecture ensures efficient data flow and request handling. 
+
 **Movie Recommendations:**
 AWS Personalize provides personalized movie recommendations. A mapping file ("Final2.csv") in an S3 bucket connects movie IDs to TMDb IDs. TMDb API fetches movie details, including title, poster, genre, and rating. This data enriches the frontend for user display. 
+
 **User Interactions:** 
 User interactions include activities like watching, clicking, liking, and disliking movies.These interactions contribute to user profiles and personalized recommendations.
 
@@ -26,14 +29,19 @@ User interactions include activities like watching, clicking, liking, and dislik
 
 **MovieLens Dataset and AWS Personalize:**
 The MovieLens dataset is leveraged to generate personalized recommendations using AWS Personalize.This dataset is stored in an unstructured format on AWS S3.
+
 **Unstructured Data for Scalability:**
 Storing data in an unstructured manner is chosen for its cost-efficiency and scalability benefits.This approach is particularly suitable for accommodating substantial data volumes.Real-time updates are not the focus, allowing for extensive data storage without time constraints.
+
 **AWS Personalize Operation:**
 AWS Personalize provides recommendations and updates data in batch mode.Personalize and event trackers work in tandem.
+
 **Event Tracking and Data Flow:**
 Event trackers collect and log user interactions, categorizing them as events.These events are sent to an AWS S3 data store for further processing.The preprocessed data is formatted for use as input in AWS Personalize.
+
 **Machine Learning Models in AWS Personalize:**
 Preprocessed data is used to train machine learning models within AWS Personalize.These models understand user preferences and generate personalized recommendations.
+
 **Batch Mode for Data Updates:**
 Data is updated in batch mode to ensure recommendations remain up-to-date.Batch recommendations are generated periodically for large sets of users in an offline process.The frequency of retraining depends on factors such as how quickly user behavior and preferences change and the volume of new data collected. The goal is to ensure that the recommendations remain relevant. 
 
@@ -48,10 +56,16 @@ Data is updated in batch mode to ensure recommendations remain up-to-date.Batch 
 In order to establish a substantial competitive advantage relative to existing recommender systems, we believe that Intellistream should possess the capability to integrate evolving user emotional states when suggesting content.To accomplish this, we propose an approach leveraging user reviews for movies, accessible in the "tags.csv" dataset. We will employ sentiment analysis techniques on this dataset to understand the mood associated with each movie. Then, we'll assess the user's mood and recommend movies that match their current emotions.
 
 **Judging Users Mood**
-Naive Method: Explicitly ask the user what genre they are interested in currently and provide recommendations according to their input.
-Interaction Analysis: The system can track a user's interaction with different genres over time. For instance, if a user frequently watches dramas or sad movies, it might suggest a preference for such genres, possibly reflecting a particular mood.
-Rating Analysis: analyzing the ratings and reviews given by a user to different genres can provide insights into their preferences and possibly their mood.
-Genre Tracking/Watch History: Observing the sequence of genres a user interacts with can also be useful in judging user mood.
+**Naive Method:** 
+Explicitly ask the user what genre they are interested in currently and provide recommendations according to their input.
+
+**Interaction Analysis:** The system can track a user's interaction with different genres over time. For instance, if a user frequently watches dramas or sad movies, it might suggest a preference for such genres, possibly reflecting a particular mood.
+
+**Rating Analysis:** 
+analyzing the ratings and reviews given by a user to different genres can provide insights into their preferences and possibly their mood.
+
+**Genre Tracking/Watch History:**
+Observing the sequence of genres a user interacts with can also be useful in judging user mood.
 
 **Filtering in AWS Personalize**
 Filtering in AWS Personalize allows you to narrow down the set of recommended items by applying certain conditions or filters. This is particularly useful when you want to ensure that the recommendations meet specific criteria. In our use case , we can filter movies with genres which map to users’ current moods and suggest recommendations accordingly.

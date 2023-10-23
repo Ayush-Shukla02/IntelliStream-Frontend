@@ -1,7 +1,7 @@
 
 ## Screenshots
 
-![](https://drive.google.com/file/d/1gUg6_44QNSj64_xNCFjG9NqIzINeK1zw/view?usp=share_link)
+![](logo.jpeg)
 
 
 # IntelliStream

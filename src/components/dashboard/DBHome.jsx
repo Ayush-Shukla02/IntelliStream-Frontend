@@ -2,10 +2,6 @@ import React, { useEffect } from "react";
 // import { CChart } from "@coreui/react-chartjs";
 
 const DBHome = () => {
-	// const products = useSelector((state) => state.products);
-	// const users = useSelector((state) => state.users);
-	// const dispatch = useDispatch();
-
 	// const drinks = products?.filter(
 	// 	(item) => item.product_category === "drinks"
 	// );
@@ -21,22 +17,6 @@ const DBHome = () => {
 	// 	(item) => item.product_category === "chinese"
 	// );
 	// const bread = products?.filter((item) => item.product_category === "bread");
-
-	// useEffect(() => {
-	// 	if (!products) {
-	// 		getAllProducts().then((data) => {
-	// 			dispatch(setAllProducts(data));
-	// 		});
-	// 	}
-	// }, []);
-
-	// useEffect(() => {
-	// 	if (!users) {
-	// 		getAllUsers().then((data) => {
-	// 			dispatch(setAllUsersDetails(data));
-	// 		});
-	// 	}
-	// }, []);
 
 	return (
 		<div className="flex items-center justify-center flex-col pt-6 w-full h-full">

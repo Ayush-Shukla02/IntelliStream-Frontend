@@ -10,7 +10,7 @@ FireTV IntelliStream leverages advanced AI to account for evolving preferences, 
 <details>
 <summary>PHASE 1 - Prototype</summary>
 
-
+<h2>PHASE 1 - Prototype</h2>
 <h3>WORKFLOW</h3>
 
 **User Authentication:**
@@ -54,6 +54,8 @@ Data is updated in batch mode to ensure recommendations remain up-to-date.Batch 
 
 <summary>PHASE 2 - Basic Enhancements</summary>
 
+<h2>PHASE 2 - Basic Enhancements</h2>
+
 In order to establish a substantial competitive advantage relative to existing recommender systems, we believe that Intellistream should possess the capability to integrate evolving user emotional states when suggesting content.To accomplish this, we propose an approach leveraging user reviews for movies, accessible in the "tags.csv" dataset. We will employ sentiment analysis techniques on this dataset to understand the mood associated with each movie. Then, we'll assess the user's mood and recommend movies that match their current emotions.
 
 <h3>Judging Users Mood</h3>
@@ -84,6 +86,8 @@ Filtering in AWS Personalize allows you to narrow down the set of recommended it
 
 <summary>Phase 3 - suggest name for this i forhot what jissu said</summary>
 
+<h2>Phase 3 - suggest name for this i forhot what jissu said</h2>
+
 After encapsulating user mood into our recommender system , we now want to judge users’ likings and preferences before recommending them content to stream.
 We want to maintain a user profile which contains information about user’s interest in different genres. Doing so will enable us to suggest collaborative recommendations . 
 
@@ -106,6 +110,8 @@ Use the mapping of trailer content to genres, moods, and concepts to recommend f
 <details>
 
 <summary>PHASE 4 - Future Scope </summary>
+
+<h2>PHASE 4 - Future Scope </h2>
 Once Intellistream is fully implemented, it's essential to maintain an iterative approach, consistently refining based on feedback and technological advancements.
 
 <h3>Business Relevance/Scope/Opportunity:</h3>

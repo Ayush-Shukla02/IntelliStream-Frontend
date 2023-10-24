@@ -75,6 +75,7 @@ To gain a significant edge over existing recommender systems, Intellistream aims
 
 **Family Friendly Filters** - // add text
 
+**Improve Frugality** - // add ways
 ---
 
 ## 🌟 Solution Enhancement 🌟

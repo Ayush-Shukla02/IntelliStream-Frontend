@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.jpeg" alt="IntelliStream Logo" width="250"/>
+  <img src="src/assets/img/logo_intellistream.png" alt="IntelliStream Logo" width="450"/>
 </p>
 
 # 🎬 INTELLISTREAM 🎬

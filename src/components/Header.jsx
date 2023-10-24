@@ -33,7 +33,7 @@ const Header = () => {
 	}, [User]);
 
 	return (
-		<header className="fixed z-50 inset-x-0 top-0 flex items-center justify-between  md:px-5 " style={{ backgroundImage: "linear-gradient(rgba(2, 10, 20, 1),rgba(2, 10, 20, 1))"}}>
+		<header className="fixed z-50 inset-x-0 top-0 flex items-center justify-between  md:px-5 " style={{ backgroundImage: "linear-gradient(rgba(2, 10, 20, .8),rgba(2, 10, 20, .8))"}}>
 			<NavLink
 				to={"/"}
 				className="flex items-center justify-center gap-4"

@@ -59,16 +59,16 @@ function SearchComponent() {
 		// 	setMovies(null);
 		// }
 	};
-
+	// color: rgb(255, 77, 0);
 	return (
 		<div className="flex flex-col">
 			<Header />
-			<div className="flex items-center justify-start mt-24 bg-gray-400">
+			<div className="flex items-center justify-start mt-24 ">
 				<div className="w-[37%] m-2 p-2">
 					<LoginInput
 						placeholder={"Search genre here"}
 						icon={
-							<BiSearchAlt2 className="text-xl text-textColor" />
+							<BiSearchAlt2 className="text-xl text-textColor"  />
 						}
 						inputState={genre}
 						inputStateFunc={setGenre}
@@ -78,6 +78,7 @@ function SearchComponent() {
 				<motion.button
 					{...buttonClick}
 					className="w-[7%] px-4 py-2 rounded-md bg-red-400 cursor-pointer text-white text-xl capitalize hover:bg-red-500 transition-all duration-156"
+					style={{background: "rgb(230, 51, 0)"}}
 					onClick={handleSearch}
 				>
 					Search

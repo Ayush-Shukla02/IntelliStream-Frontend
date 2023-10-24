@@ -38,15 +38,14 @@ _TODO: Insert screenshots here_
 
 - **Dataset:** Uses the MovieLens dataset stored on AWS S3.
 
-- **Unstructured Data for Scalability:** Data is stored unstructured for scalability.
-
-- **AWS Personalize Operation:** Recommendations and updates are in batch mode.
+- **Unstructured Data for Scalability:** Unstructured data is stored as it is very cost-effective.
 
 - **Event Tracking:** Tracks user interactions and logs them as events. Preprocessed data then feeds into AWS Personalize.
 
 - **Machine Learning Models:** AWS Personalize trains models for personalized recommendations.
 
-- **Batch Mode for Data Updates:** Recommendations stay updated in batch mode.
+- **Retraining and Batch Mode:** Retraining frequency depends on how fast user preferences change and the volume of new data collected, all to keep recommendations relevant.
+After retraining , recommendations are updated for all users simultaneously.
 
 <p align="center">
   <img src="public/readme/interaction.png" alt="User Interaction" width="750"/>
@@ -56,7 +55,7 @@ _TODO: Insert screenshots here_
 
 ## ⚙️ PHASE 2 - Basic Enhancements ⚙️
 
-Proposing an approach leveraging user reviews for movies to integrate evolving user emotional states into recommendations.
+To gain a significant edge over existing recommender systems, Intellistream aims to integrate users' evolving emotional states when making content recommendations. Our strategy involves utilizing sentiment analysis on movie reviews to determine the emotional context of each film. By assessing a user's current mood, we will recommend movies that align with their emotional state.
 
 ### Judging Users Mood:
 
@@ -66,7 +65,7 @@ Proposing an approach leveraging user reviews for movies to integrate evolving u
   
 - **Rating Analysis:** Understand preferences through ratings and reviews.
   
-- **Genre Tracking/Watch History:** Track sequence of genre interactions.
+- **Watch History:** We use a user's viewing history to determine their preferred genres.
   
 - **Filtering in AWS Personalize:** Filter movies that match users’ current moods.
 
@@ -74,37 +73,37 @@ Proposing an approach leveraging user reviews for movies to integrate evolving u
 
 ## 🌟 Phase 3 - Advanced Mood Insights 🌟
 
-Delve deeper into understanding user's likings and preferences.
+Having integrated user mood into our recommender system, our next step is to assess users' preferences before making content recommendations. This involves creating user profiles that track their genre interests, allowing us to provide collaborative recommendations.
 
 ### Key Idea:
 
-- **Video Player for Trailers:** Introduce an inbuilt video player to showcase movie trailers. Analyze trailers frame-by-frame for moods, genres, and concepts.
+- **Video Player for Trailers:** Introduce an inbuilt video player to showcase movie trailers. A-priori analyze trailers frame-by-frame for moods, genres, and concepts.
 
 - **Mood and Genre Categorization:** Categorize recognized elements in trailers.
 
 - **User Preference Profiling:** Update user profiles based on trailer interactions.
 
-- **Recommendation Engine:** Recommendations based on trailer content.
+- **Recommendation Engine:** Recommendations based on trailer content. if a user enjoyed action-packed scenes in a trailer, the system can recommend action movies with similar scenes or moods.
+
 
 ---
 
 ## 🌌 PHASE 4 - Future Scope 🌌
 
-### Business Relevance/Scope/Opportunity:
+### Business Opportunity:
 
-- **Audience Expansion:** Attract a broader audience.
+- **Audience Expansion:** Attract a broader audience, enhancing Intellistream’s market share.
 
-- **Monetization Channels:** Boost revenue through precise recommendations.
+- **Monetization Channels:** Precise recommendations and exclusive early releases in collaboration with content providers enhance the appeal of premium content purchases or rentals to customers.
 
-- **Brand Loyalty:** Enhance user retention.
+- **Brand Loyalty:** Satisfied users are more likely to recommend IntelliStream to peers, organically increasing its user base.
 
-- **Personalized Ad Recommendations:** Tailor ads to individual users.
+- **Personalized Ad Recommendations:** Tailor ads to individual users, increasing click-through rates.
 
 ### Improvements/Modifications/More Features:
 
-- **Cross-device Integration:** Integrate activity from other Amazon devices.
+- **Cross-device Integration:** Integrate activity from other Amazon services like Kindle and Music to provide more holistic understanding of preferences.
 
-- **Predictive Analysis:** Predict future content trends.
+- **Multilingual Voice Commands:** Implementing voice recognition to enhance user experience by allowing user queries that follow the pattern "find me something similar to <this>." This integration must be designed to comprehend multiple languages and dialects, catering to a global audience.
 
-- **Multilingual Voice Commands:** Implement multilingual voice recognition.
 

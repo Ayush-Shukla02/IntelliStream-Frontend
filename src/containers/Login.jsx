@@ -76,7 +76,7 @@ const Login = () => {
 				className="w-full h-full object-cover absolute top-0 left-0"
 			/>
 			{/* Content Box */}
-			<div className="flex flex-col items-center bg-darkOverlay w-[30%] md:w-500 h-full z-10 backdrop-blur-xl p-4 px-4 py-12 gap-6">
+			<div className="flex flex-col items-center bg-darkOverlay w-[30%] md:w-500 h-full z-10 backdrop-blur-md p-4 px-4 py-12 gap-6">
 				<div className="flex items-center justify-start gap-4 w-full">
 					<img src={Logo} className="w-12 rounded-full" alt="Logo" />
 					<p className="text-headingColor font-semibold text-2xl">
@@ -171,7 +171,7 @@ const Login = () => {
 					) : (
 						<motion.button
 							{...buttonClick}
-							className="w-[50%] px-4 py-2 rounded-md bg-red-400 cursor-pointer text-white text-xl capitalize hover:bg-red-500 transition-all duration-156"
+							className="w-[50%] px-4 py-2 rounded-xl bg-[#1b2024] cursor-pointer text-white text-xl capitalize hover:bg-red-500 transition-all duration-156"
 							onClick={handleLogin}
 						>
 							Sign In

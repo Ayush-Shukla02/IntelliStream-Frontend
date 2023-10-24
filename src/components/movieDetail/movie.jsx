@@ -1,11 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./movie.css";
 import { useParams } from "react-router-dom";
 import Header from "../Header";
+import { motion } from "framer-motion";
+import { buttonClick } from "../../animations";
+import AuthContext from "../../context/AuthContext";
+import axios from "axios";
+import { BiSolidLike, BiSolidDislike, BiLogoImdb } from "react-icons/bi";
+import { BsFillPlayCircleFill } from "react-icons/bs";
+import { lambdaUserInteractionURL } from "../../api";
 
 const Movie = () => {
 	const [currentMovieDetail, setMovie] = useState();
 	const { id } = useParams();
+	const [interaction, setInteraction] = useState(null);
+	const { User, userId } = useContext(AuthContext);
 
 	useEffect(() => {
 		getData();
@@ -19,6 +28,28 @@ const Movie = () => {
 			.then((res) => res.json())
 			.then((data) => setMovie(data));
 	};
+
+	const updateInteraction = async () => {
+		// const response =
+		console.log("updating the interaction", interaction);
+
+		try {
+			// console.log("userId: ", userId);
+			const response = await axios.get(
+				`${lambdaUserInteractionURL}?tmdbId=${id}&userId=${userId}&event_type=${interaction}&timestamp=${Date.now()}`
+			);
+
+			console.log(response);
+		} catch (error) {
+			console.error("Error updating interaction:", error);
+		}
+	};
+
+	useEffect(() => {
+		if (interaction) {
+			updateInteraction();
+		}
+	}, [interaction]);
 
 	return (
 		<div className="movie">
@@ -107,39 +138,49 @@ const Movie = () => {
 					</div>
 				</div>
 			</div>
-			<div className="movie__links">
-				<div className="movie__heading">Useful Links</div>
-				{currentMovieDetail && currentMovieDetail.homepage && (
-					<a
-						href={currentMovieDetail.homepage}
-						target="_blank"
-						style={{ textDecoration: "none" }}
+			<div className="flex align-center w-[75%] h-20 gap-4 mb-20">
+				<div className="flex items-center text-white text-3xl w-[20%]">
+					Your Thoughts
+				</div>
+				<div className="flex gap-2 w-full justify-around">
+					<motion.button
+						{...buttonClick}
+						className="w-[15%] px-4 py-2 rounded-3xl bg-green-400 cursor-pointer text-white text-xl capitalize hover:bg-green-600 transition-all duration-156"
+						onClick={() => setInteraction("like")}
 					>
-						<p>
-							<span className="movie__homeButton movie__Button">
-								Homepage{" "}
-								<i className="newTab fas fa-external-link-alt"></i>
-							</span>
-						</p>
-					</a>
-				)}
-				{currentMovieDetail && currentMovieDetail.imdb_id && (
-					<a
-						href={
-							"https://www.imdb.com/title/" +
-							currentMovieDetail.imdb_id
-						}
-						target="_blank"
-						style={{ textDecoration: "none" }}
+						<BiSolidLike className="text-green-100 text-4xl w-full" />
+					</motion.button>
+					<motion.button
+						{...buttonClick}
+						className="w-[15%] px-4 py-2  rounded-3xl bg-red-500 cursor-pointer text-white text-xl capitalize hover:bg-red-600 transition-all duration-156"
+						onClick={() => setInteraction("dislike")}
 					>
-						<p>
-							<span className="movie__imdbButton movie__Button">
+						<BiSolidDislike className="text-red-100 text-4xl w-full" />
+					</motion.button>
+					<motion.button
+						{...buttonClick}
+						className="w-[15%] px-4 py-2 rounded-3xl bg-blue-400 cursor-pointer text-white text-xl capitalize hover:bg-blue-500 transition-all duration-156"
+						onClick={() => setInteraction("watch")}
+					>
+						<BsFillPlayCircleFill className="text-blue-100 text-4xl w-full" />
+					</motion.button>
+					{currentMovieDetail && currentMovieDetail.imdb_id && (
+						<a
+							href={
+								"https://www.imdb.com/title/" +
+								currentMovieDetail.imdb_id
+							}
+							target="_blank"
+							className="flex justify-center items-center w-[15%] px-4 py-2 rounded-3xl bg-yellow-400 cursor-pointer text-white text-xl capitalize hover:bg-yellow-500 transition-all duration-156"
+						>
+							{/* <span className="text-bold">
 								IMDb
 								<i className="newTab fas fa-external-link-alt"></i>
-							</span>
-						</p>
-					</a>
-				)}
+							</span> */}
+							<BiLogoImdb className="text-black text-5xl w-full" />
+						</a>
+					)}
+				</div>
 			</div>
 			<div className="movie__heading">Production companies</div>
 			<div className="movie__production">

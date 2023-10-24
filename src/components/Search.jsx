@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import LoginInput from "./LoginInput";
-import { FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { buttonClick } from "../animations";
 import Cards from "./card/card";

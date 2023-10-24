@@ -13,4 +13,4 @@ export const lambdaStatsURL =
 	"https://e2ngrdk23aexn7skv6tz73zuhi0qfuhu.lambda-url.ap-south-1.on.aws/";
 
 export const lambdaUserInteractionURL =
-	"https://4yqd77siyeaoailt4kiezocnly0vhwst.lambda-url.ap-south-1.on.aws/";
+	"https://3ip4wl5ojw47eudfunfwcrd4tm0ievhx.lambda-url.ap-south-1.on.aws/";

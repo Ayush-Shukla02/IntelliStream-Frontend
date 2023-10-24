@@ -30,11 +30,9 @@ const Movie = () => {
 	};
 
 	const updateInteraction = async () => {
-		// const response =
 		console.log("updating the interaction", interaction);
 
 		try {
-			// console.log("userId: ", userId);
 			const response = await axios.get(
 				`${lambdaUserInteractionURL}?tmdbId=${id}&userId=${userId}&event_type=${interaction}&timestamp=${Date.now()}`
 			);
@@ -173,10 +171,6 @@ const Movie = () => {
 							target="_blank"
 							className="flex justify-center items-center w-[15%] px-4 py-2 rounded-3xl bg-yellow-400 cursor-pointer text-white text-xl capitalize hover:bg-yellow-500 transition-all duration-156"
 						>
-							{/* <span className="text-bold">
-								IMDb
-								<i className="newTab fas fa-external-link-alt"></i>
-							</span> */}
 							<BiLogoImdb className="text-black text-5xl w-full" />
 						</a>
 					)}

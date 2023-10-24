@@ -135,13 +135,10 @@
 .movie__productionComapany {
 	width: 200px;
 	margin: 2rem;
-	color: white;
 }
 
 .productionCompanyImage {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	color: white;
 }

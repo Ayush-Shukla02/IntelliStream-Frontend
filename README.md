@@ -69,7 +69,11 @@ To gain a significant edge over existing recommender systems, Intellistream aims
 
 **Cross-device Integration:** Integrate activity from other Amazon services like Kindle and Music to provide more holistic understanding of preferences.
 
-**Family Friendly Filters** - // add text
+**Implement Filters:**
+
+1. Family Friendly Filter: We have integrated family-friendly filters to ensure that the content is suitable for all age groups. This filter restricts access to content that may not be appropriate for younger audiences.
+
+2. User Subscription Filter: Intellistream will guarantee that users are recommended movies only when they have a valid subscription to the OTT platform where the recommended movie is accessible for viewing.
 
 ---
 

@@ -14,7 +14,6 @@ const DBHistory = () => {
 	const fetchMovies = async () => {
 		const fetchPromises = recentMovies.map((movie) => {
 			const tmdbId = movie.tmdbId.toString().split(".")[0];
-			// console.log(tmdbId);
 
 			return fetch(
 				`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
@@ -43,7 +42,6 @@ const DBHistory = () => {
 	useEffect(() => {
 		if (userId && !recentMovies) {
 			fetchRecent();
-			// console.log("fetching recent: ");
 		}
 		if (recentMovies) {
 			console.log("Recent Movies:", recentMovies);
@@ -63,7 +61,10 @@ const DBHistory = () => {
 						<h1 className="text-[50px] text-white font-semibold">
 							Your Watch History
 						</h1>
-						<div className="movie__list">
+						<div
+							style={{ marginLeft: "9rem" }}
+							className="movie__list"
+						>
 							<div className="list__cards">
 								{historyMovies.map((movie) => (
 									<Cards key={movie.id} movie={movie} />

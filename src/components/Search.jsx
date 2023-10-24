@@ -38,7 +38,7 @@ function SearchComponent() {
 
 	const fetchMovies = async () => {
 		fetch(
-			"https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US"
+			`https://api.themoviedb.org/3/discover/movie?api_key=4e44d9029b1270a757cddc766a1bcb63&with_genres=${genreId}`
 		)
 			.then((res) => res.json())
 			.then((data) => setMovies(data.results));
@@ -68,7 +68,7 @@ function SearchComponent() {
 					<LoginInput
 						placeholder={"Search genre here"}
 						icon={
-							<BiSearchAlt2 className="text-xl text-textColor"  />
+							<BiSearchAlt2 className="text-xl text-gray-300" />
 						}
 						inputState={genre}
 						inputStateFunc={setGenre}
@@ -78,7 +78,7 @@ function SearchComponent() {
 				<motion.button
 					{...buttonClick}
 					className="w-[7%] px-4 py-2 rounded-md bg-red-400 cursor-pointer text-white text-xl capitalize hover:bg-red-500 transition-all duration-156"
-					style={{background: "rgb(230, 51, 0)"}}
+					style={{ background: "rgb(230, 51, 0)" }}
 					onClick={handleSearch}
 				>
 					Search

@@ -1,162 +1,110 @@
-<p align="center"><img src="logo.jpeg" alt="logo" width="250" align="center"/></p>
+<p align="center">
+  <img src="logo.jpeg" alt="IntelliStream Logo" width="250"/>
+</p>
 
+# 🎬 INTELLISTREAM 🎬
 
+**FireTV IntelliStream** leverages advanced AI to account for evolving preferences, providing diverse recommendations, ensuring users spend less time searching and more time immersed in content. The frontend is powered by Reactjs and the backend is fully hosted on AWS.
 
-<h1>INTELLISTREAM</h1>
+---
 
-FireTV IntelliStream leverages advanced AI to account for evolving preferences, and provide diverse recommendations ensuring they spend less time searching and more time immersed in content. The Frontend is built using Reactjs and backend is fully hosted on AWS.
+## 🖼️ FrontEnd Demo 🖼️
 
+_TODO: Insert screenshots here_
 
-<details>
-<summary>PHASE 1 - Prototype</summary>
+---
 
-<h2>PHASE 1 - Prototype</h2>
-<h3>WORKFLOW</h3>
+## 🚀 PHASE 1 - Prototype 🚀
 
-<p align="center"><img src="workflow.png" alt="logo" width="750" align="center"/></p>
+### Workflow:
 
-**User Authentication:**
-AWS Amplify and AWS Cognito handle user authentication. Amplify provides a user authentication interface. Cognito User Pools act as user directories for user management and authentication. Cognito User Pools store user profiles and authentication tokens. A unique user ID from Cognito is mapped to S3 bucket data.
+<p align="center">
+  <img src="public/readme/auth.png" alt="Authentication Flow" width="750"/>
+</p>
 
-**System Architecture:**
-Frontend communicates with AWS Lambda functions via an HTTP API Gateway. This architecture ensures efficient data flow and request handling. 
-
-**Movie Recommendations:**
-AWS Personalize provides personalized movie recommendations. A mapping file ("Final2.csv") in an S3 bucket connects movie IDs to TMDb IDs. TMDb API fetches movie details, including title, poster, genre, and rating. This data enriches the frontend for user display. 
-
-**User Interactions:** 
-User interactions include activities like watching, clicking, liking, and disliking movies.These interactions contribute to user profiles and personalized recommendations.
-
-
-<h3>AWS PERSONALIZE - working and retraining</h3>
-
-**MovieLens Dataset and AWS Personalize:**
-The MovieLens dataset is leveraged to generate personalized recommendations using AWS Personalize.This dataset is stored in an unstructured format on AWS S3.
-
-**Unstructured Data for Scalability:**
-Storing data in an unstructured manner is chosen for its cost-efficiency and scalability benefits.This approach is particularly suitable for accommodating substantial data volumes.Real-time updates are not the focus, allowing for extensive data storage without time constraints.
-
-**AWS Personalize Operation:**
-AWS Personalize provides recommendations and updates data in batch mode.Personalize and event trackers work in tandem.
-
-**Event Tracking and Data Flow:**
-Event trackers collect and log user interactions, categorizing them as events.These events are sent to an AWS S3 data store for further processing.The preprocessed data is formatted for use as input in AWS Personalize.
-
-**Machine Learning Models in AWS Personalize:**
-Preprocessed data is used to train machine learning models within AWS Personalize.These models understand user preferences and generate personalized recommendations.
-
-**Batch Mode for Data Updates:**
-Data is updated in batch mode to ensure recommendations remain up-to-date.Batch recommendations are generated periodically for large sets of users in an offline process.The frequency of retraining depends on factors such as how quickly user behavior and preferences change and the volume of new data collected. The goal is to ensure that the recommendations remain relevant. 
-
-
-</details>
-
-
-<details>
-
-<summary>PHASE 2 - Basic Enhancements</summary>
-
-<h2>PHASE 2 - Basic Enhancements</h2>
-
-In order to establish a substantial competitive advantage relative to existing recommender systems, we believe that Intellistream should possess the capability to integrate evolving user emotional states when suggesting content.To accomplish this, we propose an approach leveraging user reviews for movies, accessible in the "tags.csv" dataset. We will employ sentiment analysis techniques on this dataset to understand the mood associated with each movie. Then, we'll assess the user's mood and recommend movies that match their current emotions.
-
-<h3>Judging Users Mood</h3>
-
-**Naive Method:** 
-Explicitly ask the user what genre they are interested in currently and provide recommendations according to their input.
-
-**Interaction Analysis:** The system can track a user's interaction with different genres over time. For instance, if a user frequently watches dramas or sad movies, it might suggest a preference for such genres, possibly reflecting a particular mood.
-
-**Rating Analysis:** 
-analyzing the ratings and reviews given by a user to different genres can provide insights into their preferences and possibly their mood.
-
-**Genre Tracking/Watch History:**
-Observing the sequence of genres a user interacts with can also be useful in judging user mood.
-
-**Filtering in AWS Personalize**
-Filtering in AWS Personalize allows you to narrow down the set of recommended items by applying certain conditions or filters. This is particularly useful when you want to ensure that the recommendations meet specific criteria. In our use case , we can filter movies with genres which map to users’ current moods and suggest recommendations accordingly.
-
-
-
+- **User Authentication:** AWS Amplify & AWS Cognito manage user auth. Cognito User Pools store user profiles & tokens. Unique user IDs from Cognito map to S3 data.
   
+- **System Architecture:** Frontend communicates with AWS Lambda functions via HTTP API Gateway for efficient data flow.
 
-</details>
+- **Movie Recommendations:** AWS Personalize provides movie recommendations. Movie details are fetched from TMDb API.
 
+- **User Interactions:** Activities like watching, clicking, and liking influence user profiles and personalized recommendations.
 
+<p align="center">
+  <img src="public/readme/recommendation.png" alt="Recommendation Flow" width="750"/>
+</p>
 
-<details>
+### AWS PERSONALIZE - Working and Retraining:
 
-<summary>Phase 3 - suggest name for this i forhot what jissu said</summary>
+- **Dataset:** Uses the MovieLens dataset stored on AWS S3.
 
-<h2>Phase 3 - suggest name for this i forhot what jissu said</h2>
+- **Unstructured Data for Scalability:** Data is stored unstructured for scalability.
 
-After encapsulating user mood into our recommender system , we now want to judge users’ likings and preferences before recommending them content to stream.
-We want to maintain a user profile which contains information about user’s interest in different genres. Doing so will enable us to suggest collaborative recommendations . 
+- **AWS Personalize Operation:** Recommendations and updates are in batch mode.
 
-**Key Idea:**
-We're incorporating an inbuilt video player into our system to showcase movie trailers of recommended films. We're taking it a step further by conducting frame-by-frame analysis of these trailers to identify the various moods, genres, and concepts within specific scenes.By using this approach, you can create a more dynamic and interactive recommendation system that tailors suggestions based on the user's interaction with different elements of the movie trailer
+- **Event Tracking:** Tracks user interactions and logs them as events. Preprocessed data then feeds into AWS Personalize.
 
-**Mood and Genre Categorization:**
-Categorize the moods, genres, and concepts recognized in the trailer into predefined groups. This could involve labeling scenes as "romantic," "action", "comedy," "dramatic”, and so on.
-Develop a structured system of moods and genres that can be employed by the recommendation system.
+- **Machine Learning Models:** AWS Personalize trains models for personalized recommendations.
 
-**User Preference Profiling:**
-Build and update user profiles based on their interactions with the movie trailer. Record the user's preferences for different moods, genres, and concepts.
+- **Batch Mode for Data Updates:** Recommendations stay updated in batch mode.
 
-**Recommendation Engine:**
-Integrate the user interaction and preferences into your recommendation engine.
-Use the mapping of trailer content to genres, moods, and concepts to recommend full-length movies that align with the user's preferences. For example, if a user enjoyed action-packed scenes in a trailer, the system can recommend action movies with similar scenes or moods.
+<p align="center">
+  <img src="public/readme/interaction.png" alt="User Interaction" width="750"/>
+</p>
 
+---
 
-</details>
-<details>
+## ⚙️ PHASE 2 - Basic Enhancements ⚙️
 
-<summary>PHASE 4 - Future Scope </summary>
+Proposing an approach leveraging user reviews for movies to integrate evolving user emotional states into recommendations.
 
-<h2>PHASE 4 - Future Scope </h2>
-Once Intellistream is fully implemented, it's essential to maintain an iterative approach, consistently refining based on feedback and technological advancements.
+### Judging Users Mood:
 
-<h3>Business Relevance/Scope/Opportunity:</h3>
+- **Naive Method:** Directly ask users their current genre preference.
+  
+- **Interaction Analysis:** Track genre interactions over time.
+  
+- **Rating Analysis:** Understand preferences through ratings and reviews.
+  
+- **Genre Tracking/Watch History:** Track sequence of genre interactions.
+  
+- **Filtering in AWS Personalize:** Filter movies that match users’ current moods.
 
-**Audience Expansion:** 
-As Intellistream refines its recommendation engine, it could attract a broader audience, from niche movie buffs to mainstream viewers, enhancing Intellistream’s market share.
+---
 
-**Monetization Channels:** 
-Precise recommendations mean users could be more inclined to purchase or rent premium content, providing a potential revenue boost. Additionally, partnerships with content producers can be established for exclusive early releases.
+## 🌟 Phase 3 - Advanced Mood Insights 🌟
 
-**Brand Loyalty:** 
-A system that ‘understands’ user preferences can enhance brand loyalty. Satisfied users are more likely to recommend FireTV to peers, organically increasing its user base.
-Personalized Ad Recommendations: Beyond content, tailor ads to individual users, ensuring they are relevant, thereby increasing click-through rates and potential purchases.
+Delve deeper into understanding user's likings and preferences.
 
-<h3>Improvements/Modifications/More Features</h3>
+### Key Idea:
 
-**Cross-device Integration:** 
-Recommendations can be optimized based on user activity across other Amazon devices or services, like Kindle or Amazon Music, for a more holistic understanding of preferences.
+- **Video Player for Trailers:** Introduce an inbuilt video player to showcase movie trailers. Analyze trailers frame-by-frame for moods, genres, and concepts.
 
-**Predictive Analysis:** 
-Use AI to predict future content trends or genres that will be popular, ensuring FireTV always stays one step ahead in content procurement and production.
+- **Mood and Genre Categorization:** Categorize recognized elements in trailers.
 
-**Multilingual Voice Commands:** 
-Implementing voice recognition to enhance user experience by allowing user queries that follow the pattern "find me something similar to <this>." This integration must be designed to comprehend multiple languages and dialects, catering to a global audience.
+- **User Preference Profiling:** Update user profiles based on trailer interactions.
 
+- **Recommendation Engine:** Recommendations based on trailer content.
 
+---
 
+## 🌌 PHASE 4 - Future Scope 🌌
 
-</details>
+### Business Relevance/Scope/Opportunity:
 
-<details>
-<summary>Doubts</summary>
+- **Audience Expansion:** Attract a broader audience.
 
-1)IS THERE A NEED TO ADD THESE POINTS  in phase one ?
-In our front end , we display personalized recommendations for users , top picks and 1 more thing.
-analytics - graphical representation of how many movies per genre did person watch
-accuracy of the recommendations can be calculated simply by measuring how many times does the user watch our recommended movie.
+- **Monetization Channels:** Boost revenue through precise recommendations.
 
-2)Where to add the point - make this system run on android firebase tv 
+- **Brand Loyalty:** Enhance user retention.
 
-3) add name of recipe used in personalize ?
+- **Personalized Ad Recommendations:** Tailor ads to individual users.
 
-4) fix formatting , add images , looks like text wall not pleasing at all
+### Improvements/Modifications/More Features:
 
+- **Cross-device Integration:** Integrate activity from other Amazon devices.
 
-</details>
+- **Predictive Analysis:** Predict future content trends.
+
+- **Multilingual Voice Commands:** Implement multilingual voice recognition.
+

@@ -19,7 +19,6 @@ const DBHome = () => {
 
 	const fetchMovies = async () => {
 		try {
-			// console.log("userId: ", userId);
 			const response = await axios.get(
 				`${lambdaGenreURL}?userId=${userId}`
 			);
@@ -34,8 +33,8 @@ const DBHome = () => {
 			// console.log("Movie data received: ", response.data);
 			// console.log("Interaction response received: ", newResponse.data);
 
-			console.log("Movie data received: ", data);
-			console.log("Interaction response received: ", interactionData);
+			// console.log("Movie data received: ", data);
+			// console.log("Interaction response received: ", interactionData);
 		} catch (error) {
 			console.error("Error fetching movies:", error);
 		}

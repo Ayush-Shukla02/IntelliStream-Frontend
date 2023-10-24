@@ -29,6 +29,8 @@ export const AuthProvider = ({ children }) => {
 	const deleteUser = () => {
 		localStorage.removeItem("user");
 		localStorage.removeItem("userId");
+		// setUser(null);
+		// setUserId(null);
 	};
 
 	let contextData = {

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Cards from "../card/card";
 import "./dashboard.css";
 import AuthContext from "../../context/AuthContext";
-import { lambdaStatsURL } from "../../api";
+import { lambdaHistoryURL } from "../../api";
 import axios from "axios";
 
 const DBHistory = () => {
@@ -29,7 +29,7 @@ const DBHistory = () => {
 	const fetchRecent = async () => {
 		try {
 			const response = await axios.get(
-				`${lambdaStatsURL}?userId=${userId}`
+				`${lambdaHistoryURL}?userId=${userId}`
 			);
 			const data = response.data;
 			console.log(data.recent_movies);

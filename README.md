@@ -69,6 +69,12 @@ To gain a significant edge over existing recommender systems, Intellistream aims
   
 - **Filtering in AWS Personalize:** Filter movies that match users’ current moods.
 
+**Multilingual Voice Commands:** Implementing voice recognition to enhance user experience by allowing user queries that follow the pattern "find me something similar to <this>." This integration must be designed to comprehend multiple languages and dialects, catering to a global audience.
+
+**Cross-device Integration:** Integrate activity from other Amazon services like Kindle and Music to provide more holistic understanding of preferences.
+
+**Family Friendly Filters** - // add text
+
 ---
 
 ## 🌟 Solution Enhancement 🌟
@@ -88,9 +94,7 @@ Having integrated user mood into our recommender system, our next step is to ass
 
 ---
 
-## 🌌 What's Next ? 🌌
-
-### Business Opportunity:
+### 💵 Business Opportunity 💵
 
 - **Audience Expansion:** Attract a broader audience, enhancing Intellistream’s market share.
 
@@ -100,10 +104,10 @@ Having integrated user mood into our recommender system, our next step is to ass
 
 - **Personalized Ad Recommendations:** Tailor ads to individual users, increasing click-through rates.
 
-### Improvements/Modifications/More Features:
 
-- **Cross-device Integration:** Integrate activity from other Amazon services like Kindle and Music to provide more holistic understanding of preferences.
 
-- **Multilingual Voice Commands:** Implementing voice recognition to enhance user experience by allowing user queries that follow the pattern "find me something similar to <this>." This integration must be designed to comprehend multiple languages and dialects, catering to a global audience.
+
+
+
 
 

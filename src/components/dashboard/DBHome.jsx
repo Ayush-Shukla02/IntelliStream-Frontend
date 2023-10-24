@@ -85,11 +85,26 @@ const DBHome = () => {
 								datasets: [
 									{
 										backgroundColor: [
-											"#51FF00",
-											"#00B6FF",
-											"#008BFF",
-											"#FFD100",
-											"#FF00FB",
+											"#FFC285",  // Light peach
+											"#FF9933",  // Classic orange
+											"#FF6B33",  // Reddish orange
+											"#FF4500",  // Darker deep orange
+											"#2E8B57",  // Sea green
+											"#3CB371",  // Medium sea green
+											"#20B2AA",  // Light sea green
+											"#4682B4",  // Steel blue
+											"#5F9EA0",  // Cadet blue
+											"#00CED1",  // Dark turquoise
+											"#1E90FF",  // Dodger blue
+											"#6495ED",  // Cornflower blue
+											"#6B8E23",  // Olive drab
+											"#8FBC8F",  // Dark sea green
+											"#66CDAA",  // Medium aquamarine
+											"#00FA9A",  // Medium spring green
+											"#48D1CC",  // Medium turquoise
+											"#B0C4DE",  // Light steel blue
+											"#ADD8E6",  // Light blue
+											"#87CEFA"   // Light sky blue
 										],
 										data: values,
 									},
@@ -99,8 +114,8 @@ const DBHome = () => {
 						/>
 					</div>
 				</div>
-				<div className="w-full h-full flex items-center justify-center">
-					<div className="w-275 md:w-460">
+				<div className="w-full h-full flex items-center justify-center " style ={{background: "black"}} >
+				<div className="w-275 md:w-460" >
 						<CChart
 							type="doughnut"
 							data={{
@@ -108,18 +123,51 @@ const DBHome = () => {
 								datasets: [
 									{
 										backgroundColor: [
-											"#51FF00",
-											"#00B6FF",
-											"#008BFF",
-											"#FFD100",
-											"#FF00FB",
-										],
+											"#FFC285",  // Light peach
+											"#FF9933",  // Classic orange
+											"#FF6B33",  // Reddish orange
+											"#FF4500",  // Darker deep orange
+											"#2E8B57",  // Sea green
+											"#3CB371",  // Medium sea green
+											"#20B2AA",  // Light sea green
+											"#4682B4",  // Steel blue
+											"#5F9EA0",  // Cadet blue
+											"#00CED1",  // Dark turquoise
+											"#1E90FF",  // Dodger blue
+											"#6495ED",  // Cornflower blue
+											"#6B8E23",  // Olive drab
+											"#8FBC8F",  // Dark sea green
+											"#66CDAA",  // Medium aquamarine
+											"#00FA9A",  // Medium spring green
+											"#48D1CC",  // Medium turquoise
+											"#B0C4DE",  // Light steel blue
+											"#ADD8E6",  // Light blue
+											"#87CEFA"   // Light sky blue
+										]
+										,
 										data: values,
 									},
 								],
 							}}
+							options={{
+								plugins: {
+									datalabels: {
+										color: 'white',
+										font: {
+											size: 16
+										}
+									}
+								},
+								legend: {
+									labels: {
+										fontColor: "white",
+										fontSize: 16
+									}
+								}
+							}}
 						/>
 					</div>
+
 				</div>
 			</div>
 		</div>

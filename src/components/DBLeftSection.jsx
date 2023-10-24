@@ -5,15 +5,16 @@ import { isActiveStyles, isNotActiveStyles } from "../utils/styles";
 
 const DBLeftSection = () => {
 	return (
-		<div className="h-full py-12 flex flex-col bg-lightOverlay backdrop-blur-md shadow-md minw-210 w-300 gap-3">
+		<div style={{display:"flex", flexDirection:"column", height:"100%", padding:"1rem",paddingTop:"1rem", backgroundImage: "linear-gradient(rgba(256, 256, 256, 0.2),rgb(0, 0, 0, 0))"}}>
 			<NavLink
 				to={"/"}
 				className="flex items-center justify-start px-6 gap-4"
+				style={{ padding:"1rem"}}
 			>
-				<img src={Logo} alt="logo" className="w-12 rounded-full" />
-				<p className="font-semibold text-xl">IntelliStream</p>
+				<img src={Logo} alt="logo" className="w-20 rounded-full"  />
+				<p className="font-semibold text-2xl" style={{color:"#ff4d00"}}>IntelliStream</p>
 			</NavLink>
-			<hr />
+			{/* <hr /> */}
 			<ul className="flex flex-col gap-4">
 				<NavLink
 					className={({ isActive }) =>
@@ -22,6 +23,7 @@ const DBLeftSection = () => {
 							: isNotActiveStyles
 					}
 					to={"/dashboard/home"}
+					style={{color:"#ff3300"}}
 				>
 					Home
 				</NavLink>
@@ -32,6 +34,7 @@ const DBLeftSection = () => {
 							: isNotActiveStyles
 					}
 					to={"/dashboard/history"}
+					style={{color:"#ff3300"}}
 				>
 					History
 				</NavLink>

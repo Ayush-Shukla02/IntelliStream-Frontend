@@ -115,8 +115,6 @@ const Home = () => {
 						</Link>
 					))}
 				</Carousel>
-				<MovieList type="popular" />
-				<MovieList type="top_rated" />
 				<div className="movie__list">
 					<h2 className="list__title">FOR YOU</h2>
 					{forYouMovies.length > 0 ? (
@@ -131,6 +129,9 @@ const Home = () => {
 						</div>
 					)}
 				</div>
+				<MovieList type="popular" />
+				<MovieList type="top_rated" />
+				
 			</div>
 		</>
 	);

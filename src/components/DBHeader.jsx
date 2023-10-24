@@ -24,7 +24,7 @@ const DBHeader = () => {
 
 	return (
 		<div className="w-full flex items-center justify-between gap-3">
-			<p className="text-3xl text-primary">Welcome</p>
+			<p style ={{ color :"wheat", fontSize :"40px"}}>Analytics</p>
 
 			<div className="flex items-center justify-center gap-4">
 				<div className="flex items-center justify-center gap-2">

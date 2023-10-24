@@ -33,13 +33,13 @@ const Header = () => {
 	}, [User]);
 
 	return (
-		<header className="fixed backdrop-blur-md z-50 inset-x-0 top-0 flex items-center justify-between px-12 md:px-20 py-6">
+		<header className="fixed z-50 inset-x-0 top-0 flex items-center justify-between  md:px-5 " style={{ backgroundImage: "linear-gradient(rgba(2, 10, 20, 1),rgba(2, 10, 20, 1))"}}>
 			<NavLink
 				to={"/"}
 				className="flex items-center justify-center gap-4"
 			>
-				<img src={Logo} alt="logo" className="w-12 rounded-full" />
-				<p className="font-semibold text-xl">IntelliStream</p>
+				<img src={Logo} alt="logo" className="w-20 rounded-full" />
+				<p className="font-semibold text-xl" style={{fontSize: "30px", color: "rgb(255, 77, 0)"}}>IntelliStream</p>
 			</NavLink>
 
 			<nav className="flex items-center justify-center gap-8">

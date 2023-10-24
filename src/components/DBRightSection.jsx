@@ -8,7 +8,6 @@ const DBRightSection = () => {
 		<div className="flex flex-col px-12 py-12 flex-1 h-full">
 			<DBHeader />
 			<div className="flex flex-col flex-1 overflow-y-scroll scrollbar-none">
-				<h1>This is right section of dashboard</h1>
 				<Routes>
 					<Route path="/" element={<DBHome />} />
 					<Route path="/home" element={<DBHome />} />

@@ -6,7 +6,10 @@
 
 FireTV IntelliStream leverages advanced AI to account for evolving preferences, and provide diverse recommendations ensuring they spend less time searching and more time immersed in content. The Frontend is built using Reactjs and backend is fully hosted on AWS.
 
-
+<details>
+<summary>FrontEnd Demo</summary>
+  TODO -- add screenshots here
+</details>
 <details>
 <summary>PHASE 1 - Prototype</summary>
 

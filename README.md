@@ -13,6 +13,8 @@ FireTV IntelliStream leverages advanced AI to account for evolving preferences, 
 <h2>PHASE 1 - Prototype</h2>
 <h3>WORKFLOW</h3>
 
+<p align="center"><img src="workflow.png" alt="logo" width="750" align="center"/></p>
+
 **User Authentication:**
 AWS Amplify and AWS Cognito handle user authentication. Amplify provides a user authentication interface. Cognito User Pools act as user directories for user management and authentication. Cognito User Pools store user profiles and authentication tokens. A unique user ID from Cognito is mapped to S3 bucket data.
 

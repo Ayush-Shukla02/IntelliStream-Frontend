@@ -14,7 +14,7 @@ _TODO: Insert screenshots here_
 
 ---
 
-## 🚀 PHASE 1 - Prototype 🚀
+## 🚀 Prototype 🚀
 
 ### Workflow:
 
@@ -53,7 +53,7 @@ After retraining , recommendations are updated for all users simultaneously.
 
 ---
 
-## ⚙️ PHASE 2 - Basic Enhancements ⚙️
+## ⚙️ Our Solution  ⚙️
 
 To gain a significant edge over existing recommender systems, Intellistream aims to integrate users' evolving emotional states when making content recommendations. Our strategy involves utilizing sentiment analysis on movie reviews to determine the emotional context of each film. By assessing a user's current mood, we will recommend movies that align with their emotional state.
 
@@ -71,7 +71,7 @@ To gain a significant edge over existing recommender systems, Intellistream aims
 
 ---
 
-## 🌟 Phase 3 - Advanced Mood Insights 🌟
+## 🌟 Solution Enhancement 🌟
 
 Having integrated user mood into our recommender system, our next step is to assess users' preferences before making content recommendations. This involves creating user profiles that track their genre interests, allowing us to provide collaborative recommendations.
 
@@ -88,7 +88,7 @@ Having integrated user mood into our recommender system, our next step is to ass
 
 ---
 
-## 🌌 PHASE 4 - Future Scope 🌌
+## 🌌 What's Next ? 🌌
 
 ### Business Opportunity:
 

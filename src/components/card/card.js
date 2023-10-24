@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "./card.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { lambdaUserInteractionURL } from "../../api";
+import axios from "axios";
+import AuthContext from "../../context/AuthContext";
 
 const Cards = ({ movie }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [interaction, setInteraction] = useState(null);
+	const { userId } = useContext(AuthContext);
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -13,9 +19,22 @@ const Cards = ({ movie }) => {
 		}, 1500);
 	}, []);
 
-	const updateInteraction = () => {
-		// const response =
+	const updateInteraction = async () => {
 		console.log("updating the interaction", interaction);
+
+		try {
+			const response = await axios.get(
+				`${lambdaUserInteractionURL}?tmdbId=${
+					movie.id
+				}&userId=${userId}&event_type=${interaction}&timestamp=${Date.now()}`
+			);
+
+			console.log(response);
+		} catch (error) {
+			console.error("Error updating interaction:", error);
+		}
+
+		navigate(`/movie/${movie.id}`, { replace: true });
 	};
 
 	useEffect(() => {
@@ -33,10 +52,9 @@ const Cards = ({ movie }) => {
 					</SkeletonTheme>
 				</div>
 			) : (
-				<Link
-					to={`/movie/${movie.id}`}
+				<div
 					style={{ textDecoration: "none", color: "white" }}
-					onClick={() => setInteraction("watch")}
+					onClick={() => setInteraction("click")}
 				>
 					<div className="cards">
 						<img
@@ -63,7 +81,7 @@ const Cards = ({ movie }) => {
 							</div>
 						</div>
 					</div>
-				</Link>
+				</div>
 			)}
 		</>
 	);

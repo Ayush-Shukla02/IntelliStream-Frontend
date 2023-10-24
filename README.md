@@ -6,11 +6,7 @@
 
 **FireTV IntelliStream** leverages advanced AI to account for evolving preferences, providing diverse recommendations, ensuring users spend less time searching and more time immersed in content. The frontend is powered by Reactjs and the backend is fully hosted on AWS.
 
----
-
-## 🖼️ FrontEnd Demo 🖼️
-
-_TODO: Insert screenshots here_
+ **Prototype Demo -** [Youtube Link](https://www.youtube.com/watch?v=eQrhOHf9vpI)
 
 ---
 
@@ -74,8 +70,6 @@ To gain a significant edge over existing recommender systems, Intellistream aims
 **Cross-device Integration:** Integrate activity from other Amazon services like Kindle and Music to provide more holistic understanding of preferences.
 
 **Family Friendly Filters** - // add text
-
-**Improve Frugality** - // add ways
 
 ---
 

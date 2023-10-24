@@ -5,10 +5,10 @@
 	position: relative;
 	border-radius: 10px;
 	overflow: hidden;
-	margin: 0.5rem;
+	margin: 1rem;
 	cursor: pointer;
-	min-width: 200px;
-	height: 300px;
+	min-width: 250px;
+	height: 380px;
 	z-index: 0;
 	border: 1px solid rgb(99, 99, 99);
 }
@@ -22,7 +22,7 @@
 }
 
 .cards__img {
-	height: 300px;
+	height: 380px;
 }
 
 .cards__overlay {
@@ -32,7 +32,7 @@
 	height: 290px;
 	display: flex;
 	flex-direction: column;
-	width: 85%;
+	width: 100%;
 	justify-content: flex-end;
 	background-image: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 1));
 	opacity: 0;

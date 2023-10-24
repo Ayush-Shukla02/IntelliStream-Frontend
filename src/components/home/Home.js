@@ -14,7 +14,7 @@ const Home = () => {
 	const [popularMovies, setPopularMovies] = useState([]);
 	const [forYouMovies, setForYouMovies] = useState([]);
 	const [userId, setUserId] = useState(null);
-	const [userName, setUserName] = useState(null);
+	// const [userName, setUserName] = useState(null);
 	const { storeUserId } = useContext(AuthContext);
 
 	const { User } = useContext(AuthContext);
@@ -27,7 +27,7 @@ const Home = () => {
 			.then((data) => setPopularMovies(data.results));
 	}, []);
 
-	const getUser = async () => {
+	const getUser = async (userName) => {
 		const response = await axios.get(`${lambdaUserURL}?userId=${userName}`);
 		// console.log(User);
 		console.log("response ", response.data.split(": ")[1]);
@@ -61,14 +61,14 @@ const Home = () => {
 
 	useEffect(() => {
 		if (User && !userId) {
-			// console.log(
-			// 	"user at home: ",
-			// 	User.split(",")[0].split(":")[1].split('"')[1]
-			// );
-			setUserName(User.split(",")[0].split(":")[1].split('"')[1]);
-			getUser();
+			console.log(
+				"user at home: ",
+				User.split(",")[0].split(":")[1].split('"')[1]
+			);
+			// setUserName(User.split(",")[0].split(":")[1].split('"')[1]);
+			getUser(User.split(",")[0].split(":")[1].split('"')[1]);
 		} else if (userId) {
-			// console.log("UserId: ", userId);
+			console.log("UserId: ", userId);
 			// console.log(typeof userId);
 			fetchMovies();
 		}

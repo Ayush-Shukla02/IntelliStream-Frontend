@@ -11,9 +11,9 @@ FireTV IntelliStream leverages advanced AI to account for evolving preferences, 
 <summary>PHASE 1 - Prototype</summary>
 
 <h2>PHASE 1 - Prototype</h2>
-<h3>WORKFLOW</h3>
+<h3>Workflow</h3>
 
-<p align="center"><img src="workflow.png" alt="logo" width="750" align="center"/></p>
+<p align="center"><img src="public/readme/auth.png" alt="logo" width="750" align="center"/></p>
 
 **User Authentication:**
 AWS Amplify and AWS Cognito handle user authentication. Amplify provides a user authentication interface. Cognito User Pools act as user directories for user management and authentication. Cognito User Pools store user profiles and authentication tokens. A unique user ID from Cognito is mapped to S3 bucket data.
@@ -27,6 +27,7 @@ AWS Personalize provides personalized movie recommendations. A mapping file ("Fi
 **User Interactions:** 
 User interactions include activities like watching, clicking, liking, and disliking movies.These interactions contribute to user profiles and personalized recommendations.
 
+<p align="center"><img src="public/readme/recommendation.png" alt="logo" width="750" align="center"/></p>
 
 <h3>AWS PERSONALIZE - working and retraining</h3>
 
@@ -48,6 +49,7 @@ Preprocessed data is used to train machine learning models within AWS Personaliz
 **Batch Mode for Data Updates:**
 Data is updated in batch mode to ensure recommendations remain up-to-date.Batch recommendations are generated periodically for large sets of users in an offline process.The frequency of retraining depends on factors such as how quickly user behavior and preferences change and the volume of new data collected. The goal is to ensure that the recommendations remain relevant. 
 
+<p align="center"><img src="public/readme/interaction.png" alt="logo" width="750" align="center"/></p>
 
 </details>
 
@@ -140,23 +142,6 @@ Use AI to predict future content trends or genres that will be popular, ensuring
 Implementing voice recognition to enhance user experience by allowing user queries that follow the pattern "find me something similar to <this>." This integration must be designed to comprehend multiple languages and dialects, catering to a global audience.
 
 
-
-
-</details>
-
-<details>
-<summary>Doubts</summary>
-
-1)IS THERE A NEED TO ADD THESE POINTS  in phase one ?
-In our front end , we display personalized recommendations for users , top picks and 1 more thing.
-analytics - graphical representation of how many movies per genre did person watch
-accuracy of the recommendations can be calculated simply by measuring how many times does the user watch our recommended movie.
-
-2)Where to add the point - make this system run on android firebase tv 
-
-3) add name of recipe used in personalize ?
-
-4) fix formatting , add images , looks like text wall not pleasing at all
 
 
 </details>

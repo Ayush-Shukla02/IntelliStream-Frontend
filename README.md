@@ -1,20 +1,16 @@
 <p align="center">
-  <img src="logo.jpeg" alt="IntelliStream Logo" width="250"/>
+  <img src="src/assets/img/logo_intellistream.png" alt="IntelliStream Logo" width="450"/>
 </p>
 
 # 🎬 INTELLISTREAM 🎬
 
 **FireTV IntelliStream** leverages advanced AI to account for evolving preferences, providing diverse recommendations, ensuring users spend less time searching and more time immersed in content. The frontend is powered by Reactjs and the backend is fully hosted on AWS.
 
----
-
-## 🖼️ FrontEnd Demo 🖼️
-
-_TODO: Insert screenshots here_
+ **Prototype Demo -** [Youtube Link](https://www.youtube.com/watch?v=eQrhOHf9vpI)
 
 ---
 
-## 🚀 PHASE 1 - Prototype 🚀
+## 🚀 Prototype 🚀
 
 ### Workflow:
 
@@ -53,7 +49,7 @@ After retraining , recommendations are updated for all users simultaneously.
 
 ---
 
-## ⚙️ PHASE 2 - Basic Enhancements ⚙️
+## ⚙️ Our Solution  ⚙️
 
 To gain a significant edge over existing recommender systems, Intellistream aims to integrate users' evolving emotional states when making content recommendations. Our strategy involves utilizing sentiment analysis on movie reviews to determine the emotional context of each film. By assessing a user's current mood, we will recommend movies that align with their emotional state.
 
@@ -69,9 +65,19 @@ To gain a significant edge over existing recommender systems, Intellistream aims
   
 - **Filtering in AWS Personalize:** Filter movies that match users’ current moods.
 
+**Multilingual Voice Commands:** Implementing voice recognition to enhance user experience by allowing user queries that follow the pattern "find me something similar to <this>." This integration must be designed to comprehend multiple languages and dialects, catering to a global audience.
+
+**Cross-device Integration:** Integrate activity from other Amazon services like Kindle and Music to provide more holistic understanding of preferences.
+
+**Implement Filters:**
+
+1. Family Friendly Filter: We have integrated family-friendly filters to ensure that the content is suitable for all age groups. This filter restricts access to content that may not be appropriate for younger audiences.
+
+2. User Subscription Filter: Intellistream will guarantee that users are recommended movies only when they have a valid subscription to the OTT platform where the recommended movie is accessible for viewing.
+
 ---
 
-## 🌟 Phase 3 - Advanced Mood Insights 🌟
+## 🌟 Solution Enhancement 🌟
 
 Having integrated user mood into our recommender system, our next step is to assess users' preferences before making content recommendations. This involves creating user profiles that track their genre interests, allowing us to provide collaborative recommendations.
 
@@ -88,9 +94,7 @@ Having integrated user mood into our recommender system, our next step is to ass
 
 ---
 
-## 🌌 PHASE 4 - Future Scope 🌌
-
-### Business Opportunity:
+### 💵 Business Opportunity 💵
 
 - **Audience Expansion:** Attract a broader audience, enhancing Intellistream’s market share.
 
@@ -100,10 +104,10 @@ Having integrated user mood into our recommender system, our next step is to ass
 
 - **Personalized Ad Recommendations:** Tailor ads to individual users, increasing click-through rates.
 
-### Improvements/Modifications/More Features:
 
-- **Cross-device Integration:** Integrate activity from other Amazon services like Kindle and Music to provide more holistic understanding of preferences.
 
-- **Multilingual Voice Commands:** Implementing voice recognition to enhance user experience by allowing user queries that follow the pattern "find me something similar to <this>." This integration must be designed to comprehend multiple languages and dialects, catering to a global audience.
+
+
+
 
 

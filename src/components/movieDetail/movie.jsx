@@ -16,6 +16,13 @@ const Movie = () => {
 	const [interaction, setInteraction] = useState(null);
 	const { User, userId } = useContext(AuthContext);
 
+	const [comments, setComments] = useState([]);
+	const [newComment, setNewComment] = useState("");
+
+	useEffect(() => {
+		// update the comments for the movieId to the database
+	}, [comments]);
+
 	useEffect(() => {
 		getData();
 		window.scrollTo(0, 0);
@@ -48,6 +55,20 @@ const Movie = () => {
 			updateInteraction();
 		}
 	}, [interaction]);
+
+	const handleAddComment = () => {
+		if (newComment) {
+			const commentObject = {
+				id: comments.length + 1, // You can use a more robust method for generating IDs
+				text: newComment,
+			};
+
+			setComments([...comments, commentObject]);
+
+			// Clear the input field
+			setNewComment("");
+		}
+	};
 
 	return (
 		<div className="movie">
@@ -176,26 +197,36 @@ const Movie = () => {
 					)}
 				</div>
 			</div>
-			<div className="movie__heading">Production companies</div>
-			<div className="movie__production">
-				{currentMovieDetail &&
-					currentMovieDetail.production_companies &&
-					currentMovieDetail.production_companies.map((company) => (
-						<>
-							{company.logo_path && (
-								<span className="productionCompanyImage">
-									<img
-										className="movie__productionComapany"
-										src={
-											"https://image.tmdb.org/t/p/original" +
-											company.logo_path
-										}
-									/>
-									<span>{company.name}</span>
-								</span>
-							)}
-						</>
+			<div className="flex flex-col items-center w-[75%] gap-6">
+				<div className="flex flex-col items-center w-full gap-6">
+					<div className="flex flex-start w-full text-white text-3xl">
+						Reviews
+					</div>
+					<div className="flex flex-col w-full gap-3 justify-center items-center">
+						<textarea
+							className="w-[75%] p-2 border rounded-2xl"
+							placeholder="Add a comment..."
+							value={newComment}
+							onChange={(e) => setNewComment(e.target.value)}
+						></textarea>
+						<button
+							className="bg-blue-500 text-white p-2 rounded-2xl w-[10%] hover:bg-blue-600"
+							onClick={handleAddComment}
+						>
+							Post
+						</button>
+					</div>
+				</div>
+				<div className="flex flex-col items-start w-[75%] gap-3">
+					{comments.map((comment) => (
+						<div
+							key={comment.id}
+							className="bg-white p-4 shadow rounded-2xl"
+						>
+							{comment.text}
+						</div>
 					))}
+				</div>
 			</div>
 		</div>
 	);

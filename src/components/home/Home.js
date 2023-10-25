@@ -5,7 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import MovieList from "../movieList/movieList";
 import Header from "../Header";
-import { lambdaMovieURL, lambdaUserURL } from "../../api";
+import { lambdaMovieURL, lambdaUserURL, lambdaGetUserMoodURL } from "../../api";
 import axios from "axios";
 import Cards from "../card/card";
 import AuthContext from "../../context/AuthContext";
@@ -15,7 +15,7 @@ const Home = () => {
 	const [forYouMovies, setForYouMovies] = useState([]);
 	const [userId, setUserId] = useState(null);
 	// const [userName, setUserName] = useState(null);
-	const { storeUserId } = useContext(AuthContext);
+	const { storeUserId, storeUserMood } = useContext(AuthContext);
 
 	const { User } = useContext(AuthContext);
 
@@ -59,6 +59,19 @@ const Home = () => {
 		}
 	};
 
+	const fetchMood = async () => {
+		try {
+			const response = await axios.get(
+				`${lambdaGetUserMoodURL}?userId=${userId}`
+			);
+			const data = response.data;
+			storeUserMood(data);
+			// console.log("mood is :", data);
+		} catch (error) {
+			console.error("Error fetching Mood:", error);
+		}
+	};
+
 	useEffect(() => {
 		if (User && !userId) {
 			console.log(
@@ -71,6 +84,7 @@ const Home = () => {
 			console.log("UserId: ", userId);
 			// console.log(typeof userId);
 			fetchMovies();
+			fetchMood();
 		}
 	}, [User, userId]);
 
@@ -131,7 +145,6 @@ const Home = () => {
 				</div>
 				<MovieList type="popular" />
 				<MovieList type="top_rated" />
-				
 			</div>
 		</>
 	);

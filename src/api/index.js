@@ -23,3 +23,7 @@ export const lambdaUserInteractionURL =
 // To update the interaction data of the User
 export const lambdaUpdateInteractionURL =
 	"https://3ip4wl5ojw47eudfunfwcrd4tm0ievhx.lambda-url.ap-south-1.on.aws/";
+
+// To get the Mood of the user
+export const lambdaGetUserMoodURL =
+	"https://exr3c5kcfokyaqyp4k4rmwfcwu0xrgcz.lambda-url.ap-south-1.on.aws/";

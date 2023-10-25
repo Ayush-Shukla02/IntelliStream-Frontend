@@ -8,7 +8,7 @@ import AuthContext from "../../context/AuthContext";
 import axios from "axios";
 import { BiSolidLike, BiSolidDislike, BiLogoImdb } from "react-icons/bi";
 import { BsFillPlayCircleFill } from "react-icons/bs";
-import { lambdaUserInteractionURL } from "../../api";
+import { lambdaUpdateInteractionURL } from "../../api";
 
 const Movie = () => {
 	const [currentMovieDetail, setMovie] = useState();
@@ -34,7 +34,7 @@ const Movie = () => {
 
 		try {
 			const response = await axios.get(
-				`${lambdaUserInteractionURL}?tmdbId=${id}&userId=${userId}&event_type=${interaction}&timestamp=${Date.now()}`
+				`${lambdaUpdateInteractionURL}?tmdbId=${id}&userId=${userId}&event_type=${interaction}&timestamp=${Date.now()}`
 			);
 
 			console.log(response);

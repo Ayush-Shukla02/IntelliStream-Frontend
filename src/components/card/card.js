@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "./card.css";
 import { useNavigate } from "react-router-dom";
-import { lambdaUserInteractionURL } from "../../api";
+import { lambdaUpdateInteractionURL } from "../../api";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 
@@ -24,7 +24,7 @@ const Cards = ({ movie }) => {
 
 		try {
 			const response = await axios.get(
-				`${lambdaUserInteractionURL}?tmdbId=${
+				`${lambdaUpdateInteractionURL}?tmdbId=${
 					movie.id
 				}&userId=${userId}&event_type=${interaction}&timestamp=${Date.now()}`
 			);

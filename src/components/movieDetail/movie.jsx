@@ -19,9 +19,9 @@ const Movie = () => {
 	const [comments, setComments] = useState([]);
 	const [newComment, setNewComment] = useState("");
 
-	useEffect(() => {
-		// update the comments for the movieId to the database
-	}, [comments]);
+	// useEffect(() => {
+	// update the comments for the movieId to the database
+	// }, [comments]);
 
 	useEffect(() => {
 		getData();

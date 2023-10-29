@@ -21,7 +21,7 @@ const Home = () => {
 
 	useEffect(() => {
 		fetch(
-			"https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US"
+			`https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
 		)
 			.then((res) => res.json())
 			.then((data) => setPopularMovies(data.results));
@@ -29,8 +29,6 @@ const Home = () => {
 
 	const getUser = async (userName) => {
 		const response = await axios.get(`${lambdaUserURL}?userId=${userName}`);
-		// console.log(User);
-		console.log("response ", response.data.split(": ")[1]);
 
 		storeUserId(response.data.split(": ")[1]);
 		setUserId(response.data.split(": ")[1]);
@@ -82,7 +80,6 @@ const Home = () => {
 			getUser(User.split(",")[0].split(":")[1].split('"')[1]);
 		} else if (userId) {
 			console.log("UserId: ", userId);
-			// console.log(typeof userId);
 			fetchMovies();
 			fetchMood();
 		}

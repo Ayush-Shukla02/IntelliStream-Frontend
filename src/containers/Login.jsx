@@ -46,7 +46,7 @@ const Login = () => {
 				username: email,
 				password,
 				attributes: {
-					email, // default
+					email,
 				},
 			});
 			console.log("User registered:", data);

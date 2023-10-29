@@ -8,6 +8,8 @@
 
  **Prototype Demo -** [Youtube Link](https://www.youtube.com/watch?v=eQrhOHf9vpI)
 
+**Live App-** [IntelliStream](https://intellistream-delta.vercel.app/)
+
 ---
 
 ## 🚀 Prototype 🚀

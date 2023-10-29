@@ -135,7 +135,7 @@ const Home = () => {
 							))}
 						</div>
 					) : (
-						<div className="text-white">
+						<div className="w-full items-center justify-center m-10 text-white text-2xl">
 							Login to see your recommendations here...
 						</div>
 					)}

@@ -37,7 +37,7 @@ function SearchComponent() {
 
 	const fetchMovies = async () => {
 		fetch(
-			`https://api.themoviedb.org/3/discover/movie?api_key=4e44d9029b1270a757cddc766a1bcb63&with_genres=${genreId}`
+			`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&with_genres=${genreId}`
 		)
 			.then((res) => res.json())
 			.then((data) => setMovies(data.results));

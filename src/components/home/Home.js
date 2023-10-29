@@ -21,7 +21,7 @@ const Home = () => {
 
 	useEffect(() => {
 		fetch(
-			`https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
+			`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_API_KEY}&language=en-US`
 		)
 			.then((res) => res.json())
 			.then((data) => setPopularMovies(data.results));
@@ -45,7 +45,7 @@ const Home = () => {
 				const tmdbId = movie.tmdbId.toString().split(".")[0];
 
 				return fetch(
-					`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`
+					`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${process.env.TMDB_API_KEY}&language=en-US`
 				).then((res) => res.json());
 			});
 
